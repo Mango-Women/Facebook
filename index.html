@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mangoes Book</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.4/dist/umd/supabase.min.js"></script>
+    <style>
+        :root {
+            --primary: #1877F2;
+            --primary-hover: #166FE5;
+            --primary-light: #E7F3FF;
+            --bg: #F0F2F5;
+            --card: #FFFFFF;
+            --text-primary: #1C1E21;
+            --text-secondary: #606770;
+            --text-light: #8A8D91;
+            --border: #E4E6EB;
+            --hover-bg: #F0F2F5;
+            --danger: #E41E3F;
+            --success: #31A24C;
+            --shadow: 0 1px 2px rgba(0,0,0,0.1);
+            --shadow-md: 0 2px 8px rgba(0,0,0,0.12);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.16);
+            --radius: 8px;
+            --radius-lg: 12px;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:var(--bg);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-primary);min-height:100vh;font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent}
+        img{display:block}
+
+        /* ===== HEADER ===== */
+        .header{background:var(--card);box-shadow:var(--shadow);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 12px;height:52px}
+        .header-brand{font-family:'Sacramento',cursive;font-size:30px;color:var(--primary);font-weight:700;line-height:1;cursor:default;user-select:none}
+        .header-right{display:flex;gap:4px;align-items:center}
+        .icon-btn{width:38px;height:38px;border-radius:50%;background:var(--hover-bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-size:17px;transition:background .15s,transform .1s;position:relative}
+        .icon-btn:hover{background:var(--border)}
+        .icon-btn:active{transform:scale(.93)}
+        .icon-btn .badge{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--danger)}
+
+        /* ===== APP CONTAINER ===== */
+        .app-wrap{max-width:680px;margin:0 auto;padding:12px 8px 80px}
+
+        /* ===== CARDS ===== */
+        .card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+
+        /* ===== PROFILE ===== */
+        .profile-cover{height:100px;background:linear-gradient(135deg,#1877F2 0%,#42A5F5 60%,#90CAF9 100%);position:relative}
+        .profile-body{text-align:center;padding:0 16px 14px;position:relative}
+        .profile-dp{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--card);margin:-42px auto 0;position:relative;z-index:1;background:var(--border)}
+        .profile-name{font-size:20px;font-weight:700;margin-top:6px}
+        .profile-bio{color:var(--text-secondary);font-size:13px;margin-top:2px}
+        .profile-btns{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+
+        /* ===== BUTTONS ===== */
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;transition:background .15s,transform .1s;white-space:nowrap}
+        .btn:active{transform:scale(.96)}
+        .btn-primary{background:var(--primary);color:#fff}
+        .btn-primary:hover{background:var(--primary-hover)}
+        .btn-secondary{background:var(--hover-bg);color:var(--text-primary)}
+        .btn-secondary:hover{background:var(--border)}
+        .btn-danger{background:var(--danger);color:#fff}
+        .btn-danger:hover{background:#c4182f}
+        .btn-sm{padding:5px 10px;font-size:12px}
+        .btn-link{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;padding:4px 8px;border-radius:4px}
+        .btn-link:hover{background:var(--hover-bg);color:var(--text-secondary)}
+
+        /* ===== CALL BAR ===== */
+        .call-bar{display:flex;align-items:center;gap:10px;padding:12px 14px}
+        .call-bar-dp{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
+        .call-bar-info{flex:1;min-width:0}
+        .call-bar-name{font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .call-bar-status{font-size:12px;color:var(--text-light)}
+        .call-bar-actions{display:flex;gap:6px}
+        .call-action-btn{width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .15s,transform .1s}
+        .call-action-btn:active{transform:scale(.9)}
+        .call-action-btn.voice{background:var(--primary-light);color:var(--primary)}
+        .call-action-btn.voice:hover{background:var(--primary);color:#fff}
+        .call-action-btn.video{background:var(--primary-light);color:var(--primary)}
+        .call-action-btn.video:hover{background:var(--primary);color:#fff}
+
+        /* ===== CREATE POST TRIGGER ===== */
+        .create-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px}
+        .create-trigger-dp{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
+        .create-trigger-input{flex:1;background:var(--hover-bg);border:none;border-radius:20px;padding:9px 14px;font-size:14px;color:var(--text-secondary);cursor:pointer;text-align:left;font-family:'Inter',sans-serif;transition:background .15s}
+        .create-trigger-input:hover{background:var(--border)}
+        .create-actions{display:flex;border-top:1px solid var(--border)}
+        .create-action{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-secondary);font-family:'Inter',sans-serif;border-radius:0;transition:background .15s}
+        .create-action:hover{background:var(--hover-bg)}
+        .create-action i{font-size:18px}
+        .create-action.live i{color:var(--danger)}
+        .create-action.photo i{color:var(--success)}
+        .create-action.room i{color:#9b59b6}
+
+        /* ===== POST ===== */
+        .post-header{display:flex;align-items:center;padding:10px 14px 0;gap:8px}
+        .post-dp{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
+        .post-meta{flex:1;min-width:0}
+        .post-author{font-weight:600;font-size:14px}
+        .post-time{font-size:11px;color:var(--text-light)}
+        .post-delete{width:32px;height:32px;border-radius:50%;border:none;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-light);font-size:15px;transition:background .15s}
+        .post-delete:hover{background:var(--hover-bg);color:var(--danger)}
+        .post-body{padding:6px 14px 8px}
+        .post-text{font-size:14px;line-height:1.45;word-wrap:break-word;white-space:pre-wrap}
+        .post-image{width:100%;max-height:420px;object-fit:cover;margin-top:6px;border-radius:var(--radius);cursor:pointer}
+        .post-stats{display:flex;align-items:center;justify-content:space-between;padding:6px 14px;font-size:13px;color:var(--text-light)}
+        .post-stats-left{display:flex;align-items:center;gap:4px}
+        .like-react-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#fff;border-radius:50%;font-size:9px}
+        .post-actions-row{display:flex;border-top:1px solid var(--border);margin:0 10px;padding:2px 0}
+        .post-action-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:7px 0;border:none;background:none;cursor:pointer;font-size:13px;font-weight:600;color:var(--text-secondary);font-family:'Inter',sans-serif;border-radius:6px;transition:background .15s,color .15s}
+        .post-action-btn:hover{background:var(--hover-bg)}
+        .post-action-btn.liked{color:var(--primary)}
+        .post-action-btn i{font-size:17px}
+
+        /* ===== COMMENTS ===== */
+        .comments-wrap{padding:0 14px 6px}
+        .comment{display:flex;gap:7px;margin-top:6px}
+        .comment-dp{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
+        .comment-bubble{background:var(--hover-bg);border-radius:16px;padding:7px 11px;max-width:calc(100% - 42px)}
+        .comment-author{font-weight:600;font-size:13px}
+        .comment-text{font-size:13px;line-height:1.4}
+        .comment-footer{display:flex;align-items:center;gap:8px;margin-top:2px;padding-left:4px}
+        .comment-footer span{font-size:11px;color:var(--text-light)}
+        .comment-footer button{font-size:11px;font-weight:600;color:var(--text-light);background:none;border:none;cursor:pointer;padding:0}
+        .comment-footer button:hover{color:var(--primary)}
+        .comment-footer .del-btn:hover{color:var(--danger)}
+        .comment-input-row{display:flex;align-items:center;gap:7px;padding:6px 14px 10px;border-top:1px solid var(--border)}
+        .comment-input-dp{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
+        .comment-input-field{flex:1;background:var(--hover-bg);border:1px solid var(--border);border-radius:18px;padding:7px 12px;font-size:13px;font-family:'Inter',sans-serif;color:var(--text-primary);outline:none;transition:border-color .15s}
+        .comment-input-field:focus{border-color:var(--primary)}
+        .comment-send{width:32px;height:32px;border-radius:50%;border:none;background:var(--primary);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:background .15s,transform .1s;flex-shrink:0}
+        .comment-send:active{transform:scale(.88)}
+
+        /* ===== MODALS ===== */
+        .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:16px}
+        .modal-backdrop.open{display:flex}
+        .modal-card{background:var(--card);border-radius:var(--radius-lg);width:100%;max-width:460px;box-shadow:var(--shadow-lg);animation:modalIn .2s ease}
+        @keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+        .modal-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)}
+        .modal-head h3{font-size:18px;font-weight:700}
+        .modal-close{width:34px;height:34px;border-radius:50%;border:none;background:var(--hover-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text-secondary);transition:background .15s}
+        .modal-close:hover{background:var(--border)}
+        .modal-body{padding:16px}
+        .form-group{margin-bottom:14px}
+        .form-label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:5px}
+        .form-input{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);outline:none;transition:border-color .15s,box-shadow .15s}
+        .form-input:focus{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-light)}
+        .form-textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text-primary);outline:none;resize:vertical;min-height:80px;transition:border-color .15s,box-shadow .15s}
+        .form-textarea:focus{border-color:var(--primary);box-shadow:0 0 0 2px var(--primary-light)}
+        .file-label{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1.5px dashed var(--border);border-radius:6px;cursor:pointer;color:var(--text-secondary);font-size:13px;transition:all .15s}
+        .file-label:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-light)}
+        .file-label input{display:none}
+        .img-preview{position:relative;margin-top:8px;display:none}
+        .img-preview.show{display:block}
+        .img-preview img{max-width:100%;max-height:180px;border-radius:var(--radius);object-fit:contain}
+        .img-preview-remove{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px}
+        .modal-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
+
+        /* ===== LOGIN ===== */
+        .login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;background:var(--bg)}
+        .login-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px 22px;width:100%;max-width:380px;text-align:center}
+        .login-brand{font-family:'Sacramento',cursive;font-size:48px;color:var(--primary);line-height:1.1}
+        .login-tagline{color:var(--text-secondary);font-size:14px;margin:4px 0 22px}
+        .login-card .form-input{margin-bottom:10px}
+
+        /* ===== CALL OVERLAY ===== */
+        .call-overlay{display:none;position:fixed;inset:0;background:linear-gradient(170deg,#0d1b2a 0%,#1b2838 40%,#1a3a5c 100%);z-index:300;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+        .call-overlay.open{display:flex}
+        .call-overlay-dp{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.25);background:#2a3a4a}
+        .call-overlay-name{font-size:22px;font-weight:700;margin-top:14px}
+        .call-overlay-status{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px}
+        .call-overlay-timer{font-size:20px;margin-top:6px;font-variant-numeric:tabular-nums;letter-spacing:1px}
+        .call-videos-row{display:none;gap:6px;margin:20px 0;width:92%;max-width:500px}
+        .call-videos-row.show{display:flex}
+        .call-videos-row video{flex:1;border-radius:10px;background:rgba(0,0,0,.35);max-height:260px;object-fit:cover}
+        .call-controls{display:flex;gap:14px;margin-top:30px;align-items:center}
+        .call-ctrl{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;transition:transform .12s,background .15s}
+        .call-ctrl:active{transform:scale(.88)}
+        .call-ctrl.off{background:rgba(255,255,255,.18)}
+        .call-ctrl.off:hover{background:rgba(255,255,255,.28)}
+        .call-ctrl.on{background:#fff;color:var(--text-primary)}
+        .call-ctrl.end{background:var(--danger);width:60px;height:60px;font-size:24px}
+        .call-ctrl.end:hover{background:#c4182f}
+
+        /* ===== INCOMING CALL ===== */
+        .incoming-overlay{display:none;position:fixed;inset:0;background:linear-gradient(170deg,#0d1b2a 0%,#1b2838 40%,#1a3a5c 100%);z-index:350;flex-direction:column;align-items:center;justify-content:center;color:#fff}
+        .incoming-overlay.open{display:flex}
+        .incoming-dp{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.25);animation:callPulse 2s infinite ease-out;background:#2a3a4a}
+        @keyframes callPulse{0%{box-shadow:0 0 0 0 rgba(24,119,242,.5)}70%{box-shadow:0 0 0 24px rgba(24,119,242,0)}100%{box-shadow:0 0 0 0 rgba(24,119,242,0)}}
+        .incoming-name{font-size:22px;font-weight:700;margin-top:14px}
+        .incoming-type{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px}
+        .incoming-btns{display:flex;gap:56px;margin-top:48px}
+        .incoming-btn-col{display:flex;flex-direction:column;align-items:center;gap:8px}
+        .incoming-btn{width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;transition:transform .12s}
+        .incoming-btn:active{transform:scale(.9)}
+        .incoming-btn.accept{background:var(--success)}
+        .incoming-btn.reject{background:var(--danger)}
+        .incoming-btn-col span{font-size:12px;color:rgba(255,255,255,.6)}
+
+        /* ===== TOAST ===== */
+        .toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:500;pointer-events:none}
+        .toast{background:var(--text-primary);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;box-shadow:var(--shadow-lg);animation:toastIn .25s ease;white-space:nowrap}
+        @keyframes toastIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+        /* ===== EMPTY STATE ===== */
+        .empty-state{text-align:center;padding:32px 16px;color:var(--text-light)}
+        .empty-state i{font-size:36px;margin-bottom:8px;display:block;color:var(--border)}
+        .empty-state p{font-size:14px}
+
+        /* ===== RESPONSIVE ===== */
+        @media(max-width:480px){
+            .header-brand{font-size:26px}
+            .profile-name{font-size:18px}
+            .call-overlay-name,.incoming-name{font-size:20px}
+            .call-videos-row{flex-direction:column}
+            .call-videos-row video{max-height:200px}
+            .incoming-btns{gap:40px}
+        }
+        @media(prefers-reduced-motion:reduce){
+            *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== LOGIN PAGE ===== -->
+<div id="loginPage" class="login-page">
+    <div class="login-card">
+        <div class="login-brand">Mangoes Book</div>
+        <p class="login-tagline">Connect with your favourite mango</p>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" class="form-input" placeholder="Username" autocomplete="username" required>
+            <input type="password" id="loginPassword" class="form-input" placeholder="Password" autocomplete="current-password" required>
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:11px;font-size:15px;margin-top:6px">Log In</button>
+        </form>
+    </div>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="mainApp" style="display:none">
+    <header class="header">
+        <div class="header-brand">Mangoes Book</div>
+        <div class="header-right">
+            <button class="icon-btn" id="headerLogout" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </header>
+    <main class="app-wrap">
+
+        <!-- Profile Card -->
+        <div class="card" id="profileCard">
+            <div class="profile-cover"></div>
+            <div class="profile-body">
+                <img id="profileDp" class="profile-dp" alt="Profile">
+                <div class="profile-name" id="profileName"></div>
+                <div class="profile-bio" id="profileBio"></div>
+                <div class="profile-btns">
+                    <button class="btn btn-primary btn-sm" id="editProfileBtn"><i class="fas fa-pen" style="font-size:11px"></i> Edit Profile</button>
+                    <button class="btn btn-secondary btn-sm" id="clearDataBtn"><i class="fas fa-trash-alt" style="font-size:11px"></i> Clear Data</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call Bar -->
+        <div class="card" id="callBar">
+            <div class="call-bar">
+                <img id="callBarDp" class="call-bar-dp" alt="">
+                <div class="call-bar-info">
+                    <div class="call-bar-name" id="callBarName"></div>
+                    <div class="call-bar-status">Tap to call</div>
+                </div>
+                <div class="call-bar-actions">
+                    <button class="call-action-btn voice" id="voiceCallBtn" title="Voice Call"><i class="fas fa-phone"></i></button>
+                    <button class="call-action-btn video" id="videoCallBtn" title="Video Call"><i class="fas fa-video"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Post Trigger -->
+        <div class="card">
+            <div class="create-trigger">
+                <img id="createDp" class="create-trigger-dp" alt="">
+                <div class="create-trigger-input" id="openPostModal">What's on your mind?</div>
+            </div>
+            <div class="create-actions">
+                <button class="create-action live"><i class="fas fa-video"></i> Live</button>
+                <button class="create-action photo" id="openPostPhoto"><i class="fas fa-image"></i> Photo</button>
+                <button class="create-action room"><i class="fas fa-smile"></i> Feeling</button>
+            </div>
+        </div>
+
+        <!-- Feed -->
+        <div id="feedContainer"></div>
+    </main>
+</div>
+
+<!-- ===== POST MODAL ===== -->
+<div class="modal-backdrop" id="postModal">
+    <div class="modal-card">
+        <div class="modal-head">
+            <h3>Create Post</h3>
+            <button class="modal-close" id="closePostModal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+                <img id="postModalDp" style="width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--border)" alt="">
+                <span id="postModalName" style="font-weight:600;font-size:14px"></span>
+            </div>
+            <textarea id="postTextarea" class="form-textarea" placeholder="What's on your mind?" rows="3" style="min-height:90px;border:none;background:transparent;padding:0;font-size:16px;resize:none"></textarea>
+            <div class="img-preview" id="postImgPreview">
+                <img id="postImgPreviewImg" alt="Preview">
+                <button class="img-preview-remove" id="removePostImg"><i class="fas fa-times"></i></button>
+            </div>
+            <div style="margin-top:10px">
+                <label class="file-label"><i class="fas fa-image"></i> Add Photo <input type="file" id="postFileInput" accept="image/*"></label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary btn-sm" id="cancelPost">Cancel</button>
+            <button class="btn btn-primary btn-sm" id="submitPost">Post</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== EDIT PROFILE MODAL ===== -->
+<div class="modal-backdrop" id="editModal">
+    <div class="modal-card">
+        <div class="modal-head">
+            <h3>Edit Profile</h3>
+            <button class="modal-close" id="closeEditModal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="form-label">Username</label>
+                <input type="text" id="editName" class="form-input" placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Bio</label>
+                <textarea id="editBio" class="form-textarea" placeholder="Tell something about yourself"></textarea>
+            </div>
+            <div class="form-group">
+                <label class="file-label"><i class="fas fa-camera"></i> Change Profile Photo <input type="file" id="editDpInput" accept="image/*"></label>
+            </div>
+            <div class="img-preview" id="editDpPreview">
+                <img id="editDpPreviewImg" alt="Preview">
+                <button class="img-preview-remove" id="removeEditDp"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary btn-sm" id="cancelEdit">Cancel</button>
+            <button class="btn btn-primary btn-sm" id="saveEdit">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- ===== INCOMING CALL ===== -->
+<div class="incoming-overlay" id="incomingOverlay">
+    <img id="incomingDp" class="incoming-dp" alt="">
+    <div class="incoming-name" id="incomingName"></div>
+    <div class="incoming-type" id="incomingType"></div>
+    <div class="incoming-btns">
+        <div class="incoming-btn-col">
+            <button class="incoming-btn reject" id="rejectCallBtn"><i class="fas fa-phone-slash"></i></button>
+            <span>Decline</span>
+        </div>
+        <div class="incoming-btn-col">
+            <button class="incoming-btn accept" id="acceptCallBtn"><i class="fas fa-phone"></i></button>
+            <span>Accept</span>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ACTIVE CALL ===== -->
+<div class="call-overlay" id="callOverlay">
+    <img id="callOverlayDp" class="call-overlay-dp" alt="">
+    <div class="call-overlay-name" id="callOverlayName"></div>
+    <div class="call-overlay-status" id="callOverlayStatus">Calling...</div>
+    <div class="call-overlay-timer" id="callOverlayTimer" style="display:none">00:00</div>
+    <div class="call-videos-row" id="callVideosRow">
+        <video id="localVideo" autoplay playsinline muted></video>
+        <video id="remoteVideo" autoplay playsinline></video>
+    </div>
+    <div class="call-controls">
+        <button class="call-ctrl off" id="muteBtn" title="Mute"><i class="fas fa-microphone"></i></button>
+        <button class="call-ctrl off" id="speakerBtn" title="Speaker"><i class="fas fa-volume-up"></i></button>
+        <button class="call-ctrl off" id="cameraBtn" title="Camera" style="display:none"><i class="fas fa-video"></i></button>
+        <button class="call-ctrl end" id="endCallBtn" title="End Call"><i class="fas fa-phone-slash"></i></button>
+    </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+    /* ===== SUPABASE ===== */
+    const SUPABASE_URL = 'https://wgnolfeqfjwxkjfeiowp.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_P3qDfxOGstT5zG7jbLY-fw_1NKxSwj2';
+    const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    /* ===== USER CONFIG ===== */
+    const USERS = [
+        { id: '566e8b0b-a07a-4442-b18d-2a3ca87f7992', username: 'mango1', password: 'mango1726' },
+        { id: 'f960d7a8-ec35-4ff6-910a-6571c8b74caa', username: 'mango2', password: 'mango1726' }
+    ];
+    const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="#E4E6EB" width="100" height="100"/><text x="50" y="58" text-anchor="middle" fill="#8A8D91" font-size="36" font-family="sans-serif">?</text></svg>');
+
+    /* ===== APP STATE ===== */
+    let currentUser = null;
+    let otherUser = null;
+    let localStream = null;
+    let peerConnection = null;
+    let iceQueue = [];              // Queue ICE candidates until remote description is set
+    let callState = 'idle';         // idle | calling | ringing | connected
+    let currentCallIsVideo = false;
+    let callTimerInterval = null;
+    let callStartTime = null;
+    let callTimeout = null;
+    let pendingOffer = null;        // The offer record for the incoming call
+    let isMuted = false;
+    let isCameraOff = false;
+    let updatesChannel = null;
+    let callsChannel = null;
+    let processedCallIds = new Set();
+    let retryDelayUp = 2000;
+    let retryDelayCall = 2000;
+    let ringtoneStop = null;
+
+    const RTC_CONFIG = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+    /* ===== HELPERS ===== */
+    function fmtDate(d) {
+        return new Date(d).toLocaleString('en-US', {
+            timeZone: 'Asia/Kolkata', month: 'short', day: 'numeric',
+            hour: '2-digit', minute: '2-digit', hour12: true
+        });
+    }
+
+    function fmtElapsed(sec) {
+        const m = String(Math.floor(sec / 60)).padStart(2, '0');
+        const s = String(sec % 60).padStart(2, '0');
+        return m + ':' + s;
+    }
+
+    function toast(msg) {
+        const wrap = document.getElementById('toastWrap');
+        const el = document.createElement('div');
+        el.className = 'toast';
+        el.textContent = msg;
+        wrap.appendChild(el);
+        setTimeout(() => el.remove(), 3000);
+    }
+
+    function getDp(u) { return u?.profile_picture || PLACEHOLDER; }
+
+    /* ===== RINGTONE (Web Audio) ===== */
+    function startRingtone() {
+        try {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            let on = true;
+            function beep() {
+                if (!on) return;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.frequency.value = 523;
+                gain.gain.value = 0.12;
+                osc.start(ctx.currentTime);
+                osc.stop(ctx.currentTime + 0.25);
+            }
+            beep();
+            const iv = setInterval(() => { if (on) beep(); }, 1200);
+            ringtoneStop = () => { on = false; clearInterval(iv); ctx.close(); };
+        } catch (e) { /* silent */ }
+    }
+    function stopRingtone() { if (ringtoneStop) { ringtoneStop(); ringtoneStop = null; } }
+
+    /* ===== AUTH ===== */
+    document.getElementById('loginForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const u = document.getElementById('loginUsername').value.trim();
+        const p = document.getElementById('loginPassword').value;
+        const found = USERS.find(x => x.username === u && x.password === p);
+        if (!found) { toast('Invalid credentials'); return; }
+        localStorage.setItem('loggedInUser', JSON.stringify(found));
+        sessionStorage.setItem('justLoggedIn', '1');
+        initApp(found);
+    });
+
+    document.getElementById('headerLogout').addEventListener('click', logout);
+
+    function logout() {
+        endCall();
+        if (updatesChannel) db.removeChannel(updatesChannel);
+        if (callsChannel) db.removeChannel(callsChannel);
+        updatesChannel = null;
+        callsChannel = null;
+        localStorage.removeItem('loggedInUser');
+        sessionStorage.removeItem('justLoggedIn');
+        document.getElementById('mainApp').style.display = 'none';
+        document.getElementById('loginPage').style.display = 'flex';
+    }
+
+    /* ===== INIT ===== */
+    document.addEventListener('DOMContentLoaded', () => {
+        const fresh = sessionStorage.getItem('justLoggedIn');
+        const saved = JSON.parse(localStorage.getItem('loggedInUser'));
+        if (fresh && saved) initApp(saved);
+    });
+
+    async function initApp(user) {
+        currentUser = user;
+        otherUser = USERS.find(u => u.id !== user.id);
+
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainApp').style.display = 'block';
+
+        // Load full profile from DB
+        const { data: profile } = await db.from('users').select('*').eq('id', user.id).single();
+        if (profile) { currentUser = { ...currentUser, ...profile }; }
+
+        loadProfileUI();
+        loadCallBar();
+        loadFeed();
+        subscribeUpdates();
+        subscribeCalls();
+        setInterval(checkMissedCalls, 5000);
+    }
+
+    /* ===== PROFILE UI ===== */
+    function loadProfileUI() {
+        document.getElementById('profileDp').src = getDp(currentUser);
+        document.getElementById('profileName').textContent = currentUser.username;
+        document.getElementById('profileBio').textContent = currentUser.bio || 'No bio yet';
+        document.getElementById('createDp').src = getDp(currentUser);
+    }
+
+    /* ===== CALL BAR ===== */
+    async function loadCallBar() {
+        const { data: otherProfile } = await db.from('users').select('*').eq('id', otherUser.id).single();
+        if (otherProfile) otherUser = { ...otherUser, ...otherProfile };
+        document.getElementById('callBarDp').src = getDp(otherUser);
+        document.getElementById('callBarName').textContent = otherUser.username;
+    }
+
+    /* ===== FEED ===== */
+    async function loadFeed() {
+        const { data, error } = await db
+            .from('posts')
+            .select(`
+                id, content, image, created_at, user_id,
+                users!posts_user_id_fkey(username, profile_picture),
+                comments(id, content, created_at, user_id, users!comments_user_id_fkey(username, profile_picture)),
+                likes(id, user_id)
+            `)
+            .order('created_at', { ascending: false });
+
+        if (error) { console.error('Feed error:', error); return; }
+
+        const container = document.getElementById('feedContainer');
+        if (!data || data.length === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="far fa-newspaper"></i><p>No posts yet. Be the first to share something.</p></div>';
+            return;
+        }
+
+        container.innerHTML = '';
+        data.forEach(post => {
+            const likeCount = post.likes ? post.likes.length : 0;
+            const isLiked = post.likes ? post.likes.some(l => l.user_id === currentUser.id) : false;
+            const commentCount = post.comments ? post.comments.length : 0;
+
+            const div = document.createElement('div');
+            div.className = 'card post';
+            div.innerHTML = `
+                <div class="post-header">
+                    <img src="${getDp(post.users)}" class="post-dp" alt="">
+                    <div class="post-meta">
+                        <div class="post-author">${post.users.username}</div>
+                        <div class="post-time">${fmtDate(post.created_at)}</div>
+                    </div>
+                    ${post.user_id === currentUser.id ? `<button class="post-delete" data-post-id="${post.id}" title="Delete"><i class="fas fa-ellipsis-h"></i></button>` : ''}
+                </div>
+                ${post.content ? `<div class="post-body"><div class="post-text">${escHtml(post.content)}</div></div>` : ''}
+                ${post.image ? `<img src="${post.image}" class="post-image" alt="" loading="lazy">` : ''}
+                <div class="post-stats">
+                    <div class="post-stats-left">
+                        ${likeCount > 0 ? `<span class="like-react-icon"><i class="fas fa-thumbs-up" style="font-size:9px"></i></span> ${likeCount}` : ''}
+                    </div>
+                    ${commentCount > 0 ? `<div>${commentCount} comment${commentCount !== 1 ? 's' : ''}</div>` : ''}
+                </div>
+                <div class="post-actions-row">
+                    <button class="post-action-btn ${isLiked ? 'liked' : ''}" data-action="like" data-post-id="${post.id}">
+                        <i class="${isLiked ? 'fas' : 'far'} fa-thumbs-up"></i> Like
+                    </button>
+                    <button class="post-action-btn" data-action="comment-focus" data-post-id="${post.id}">
+                        <i class="far fa-comment"></i> Comment
+                    </button>
+                </div>
+                ${post.comments && post.comments.length > 0 ? `
+                    <div class="comments-wrap">
+                        ${post.comments.map(c => `
+                            <div class="comment">
+                                <img src="${getDp(c.users)}" class="comment-dp" alt="">
+                                <div>
+                                    <div class="comment-bubble">
+                                        <div class="comment-author">${c.users.username}</div>
+                                        <div class="comment-text">${escHtml(c.content)}</div>
+                                    </div>
+                                    <div class="comment-footer">
+                                        <span>${fmtDate(c.created_at)}</span>
+                                        ${c.user_id === currentUser.id ? `<button class="del-btn" data-comment-id="${c.id}">Delete</button>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                ` : ''}
+                <div class="comment-input-row">
+                    <img src="${getDp(currentUser)}" class="comment-input-dp" alt="">
+                    <input type="text" class="comment-input-field" data-post-id="${post.id}" placeholder="Write a comment...">
+                    <button class="comment-send" data-post-id="${post.id}"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        // Bind events
+        container.querySelectorAll('[data-action="like"]').forEach(btn => {
+            btn.addEventListener('click', () => likePost(btn.dataset.postId));
+        });
+        container.querySelectorAll('[data-action="comment-focus"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = container.querySelector(`.comment-input-field[data-post-id="${btn.dataset.postId}"]`);
+                if (input) input.focus();
+            });
+        });
+        container.querySelectorAll('.post-delete').forEach(btn => {
+            btn.addEventListener('click', () => { if (confirm('Delete this post?')) deletePost(btn.dataset.postId); });
+        });
+        container.querySelectorAll('.del-btn').forEach(btn => {
+            btn.addEventListener('click', () => deleteComment(btn.dataset.commentId));
+        });
+        container.querySelectorAll('.comment-send').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const input = container.querySelector(`.comment-input-field[data-post-id="${btn.dataset.postId}"]`);
+                if (input && input.value.trim()) {
+                    addComment(btn.dataset.postId, input.value.trim());
+                }
+            });
+        });
+        container.querySelectorAll('.comment-input-field').forEach(input => {
+            input.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && input.value.trim()) {
+                    addComment(input.dataset.postId, input.value.trim());
+                }
+            });
+        });
+    }
+
+    function escHtml(s) {
+        const d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+    }
+
+    /* ===== POST CRUD ===== */
+    async function likePost(postId) {
+        const { error } = await db.from('likes').insert([{ post_id: postId, user_id: currentUser.id }]);
+        if (error && error.code !== '23505') toast('Like failed');
+        loadFeed();
+    }
+
+    async function addComment(postId, content) {
+        const { error } = await db.from('comments').insert([{ post_id: postId, user_id: currentUser.id, content }]);
+        if (error) toast('Comment failed');
+        loadFeed();
+    }
+
+    async function deletePost(postId) {
+        await db.from('likes').delete().eq('post_id', postId);
+        await db.from('comments').delete().eq('post_id', postId);
+        await db.from('posts').delete().eq('id', postId);
+        loadFeed();
+    }
+
+    async function deleteComment(commentId) {
+        await db.from('comments').delete().eq('id', commentId);
+        loadFeed();
+    }
+
+    /* ===== CREATE POST MODAL ===== */
+    let postFile = null;
+    document.getElementById('openPostModal').addEventListener('click', openPostModal);
+    document.getElementById('openPostPhoto').addEventListener('click', () => { openPostModal(); document.getElementById('postFileInput').click(); });
+    document.getElementById('closePostModal').addEventListener('click', closePostModal);
+    document.getElementById('cancelPost').addEventListener('click', closePostModal);
+    document.getElementById('postModal').addEventListener('click', e => { if (e.target === e.currentTarget) closePostModal(); });
+
+    function openPostModal() {
+        document.getElementById('postModalDp').src = getDp(currentUser);
+        document.getElementById('postModalName').textContent = currentUser.username;
+        document.getElementById('postTextarea').value = '';
+        document.getElementById('postImgPreview').classList.remove('show');
+        postFile = null;
+        document.getElementById('postModal').classList.add('open');
+        setTimeout(() => document.getElementById('postTextarea').focus(), 100);
+    }
+
+    function closePostModal() {
+        document.getElementById('postModal').classList.remove('open');
+        postFile = null;
+    }
+
+    document.getElementById('postFileInput').addEventListener('change', e => {
+        const f = e.target.files[0];
+        if (!f) return;
+        postFile = f;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            document.getElementById('postImgPreviewImg').src = ev.target.result;
+            document.getElementById('postImgPreview').classList.add('show');
+        };
+        reader.readAsDataURL(f);
+    });
+
+    document.getElementById('removePostImg').addEventListener('click', () => {
+        postFile = null;
+        document.getElementById('postImgPreview').classList.remove('show');
+        document.getElementById('postFileInput').value = '';
+    });
+
+    document.getElementById('submitPost').addEventListener('click', async () => {
+        const content = document.getElementById('postTextarea').value.trim();
+        if (!content && !postFile) return;
+
+        let imageUrl = null;
+        if (postFile) {
+            const path = `${currentUser.id}/${Date.now()}_${postFile.name}`;
+            const { error: upErr } = await db.storage.from('profile-pics').upload(path, postFile, { upsert: true });
+            if (upErr) { toast('Image upload failed'); return; }
+            imageUrl = db.storage.from('profile-pics').getPublicUrl(path).data.publicUrl;
+        }
+
+        const { error } = await db.from('posts').insert([{ user_id: currentUser.id, content: content || '', image: imageUrl }]);
+        if (error) { toast('Post failed'); return; }
+        closePostModal();
+        loadFeed();
+        toast('Posted!');
+    });
+
+    /* ===== EDIT PROFILE MODAL ===== */
+    let editDpFile = null;
+    document.getElementById('editProfileBtn').addEventListener('click', () => {
+        document.getElementById('editName').value = currentUser.username || '';
+        document.getElementById('editBio').value = currentUser.bio || '';
+        document.getElementById('editDpPreview').classList.remove('show');
+        editDpFile = null;
+        document.getElementById('editModal').classList.add('open');
+    });
+    document.getElementById('closeEditModal').addEventListener('click', () => document.getElementById('editModal').classList.remove('open'));
+    document.getElementById('cancelEdit').addEventListener('click', () => document.getElementById('editModal').classList.remove('open'));
+    document.getElementById('editModal').addEventListener('click', e => { if (e.target === e.currentTarget) document.getElementById('editModal').classList.remove('open'); });
+
+    document.getElementById('editDpInput').addEventListener('change', e => {
+        const f = e.target.files[0];
+        if (!f) return;
+        editDpFile = f;
+        const reader = new FileReader();
+        reader.onload = ev => {
+            document.getElementById('editDpPreviewImg').src = ev.target.result;
+            document.getElementById('editDpPreview').classList.add('show');
+        };
+        reader.readAsDataURL(f);
+    });
+
+    document.getElementById('removeEditDp').addEventListener('click', () => {
+        editDpFile = null;
+        document.getElementById('editDpPreview').classList.remove('show');
+        document.getElementById('editDpInput').value = '';
+    });
+
+    document.getElementById('saveEdit').addEventListener('click', async () => {
+        const newName = document.getElementById('editName').value.trim();
+        const newBio = document.getElementById('editBio').value.trim();
+        let dpUrl = currentUser.profile_picture || PLACEHOLDER;
+
+        if (editDpFile) {
+            const path = `${currentUser.id}/dp_${Date.now()}_${editDpFile.name}`;
+            const { error: upErr } = await db.storage.from('profile-pics').upload(path, editDpFile, { upsert: true });
+            if (!upErr) dpUrl = db.storage.from('profile-pics').getPublicUrl(path).data.publicUrl;
+        }
+
+        currentUser.username = newName;
+        currentUser.bio = newBio;
+        currentUser.profile_picture = dpUrl;
+        localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+
+        await db.from('users').upsert({ id: currentUser.id, username: newName, bio: newBio, profile_picture: dpUrl }, { onConflict: 'id' });
+
+        loadProfileUI();
+        loadCallBar();
+        loadFeed();
+        document.getElementById('editModal').classList.remove('open');
+        toast('Profile updated');
+    });
+
+    /* ===== CLEAR DATA ===== */
+    document.getElementById('clearDataBtn').addEventListener('click', async () => {
+        if (!confirm('Clear ALL data? This cannot be undone.')) return;
+        await db.from('likes').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        await db.from('comments').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        await db.from('posts').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        await db.from('calls').delete().neq('id', '00000000-0000-0000-0000-000000000000');
+        // Reset profile
+        currentUser.profile_picture = PLACEHOLDER;
+        currentUser.bio = '';
+        localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
+        await db.from('users').upsert({ id: currentUser.id, username: currentUser.username, bio: '', profile_picture: PLACEHOLDER }, { onConflict: 'id' });
+        loadProfileUI();
+        loadFeed();
+        toast('All data cleared');
+    });
+
+    /* ===== SUBSCRIPTIONS ===== */
+    function subscribeUpdates() {
+        if (updatesChannel) db.removeChannel(updatesChannel);
+        updatesChannel = db
+            .channel('updates-ch')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'posts' }, () => loadFeed())
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'comments' }, () => loadFeed())
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'likes' }, () => loadFeed())
+            .subscribe(status => {
+                if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
+                    setTimeout(() => { subscribeUpdates(); retryDelayUp = Math.min(retryDelayUp * 2, 30000); }, retryDelayUp);
+                } else if (status === 'SUBSCRIBED') { retryDelayUp = 2000; }
+            });
+    }
+
+    function subscribeCalls() {
+        if (callsChannel) db.removeChannel(callsChannel);
+        callsChannel = db
+            .channel('calls-ch')
+            .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'calls', filter: `receiver_id=eq.${currentUser.id}` }, payload => handleCallSignal(payload.new))
+            .subscribe(status => {
+                if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
+                    setTimeout(() => { subscribeCalls(); retryDelayCall = Math.min(retryDelayCall * 2, 30000); }, retryDelayCall);
+                } else if (status === 'SUBSCRIBED') { retryDelayCall = 2000; }
+            });
+    }
+
+    async function handleCallSignal(call) {
+        if (processedCallIds.has(call.id)) return;
+        processedCallIds.add(call.id);
+
+        const type = call.type;
+
+        if (type === 'offer') {
+            // Incoming call
+            pendingOffer = call;
+            const isVideo = checkOfferIsVideo(call.data);
+            showIncomingCall(call.sender_id, isVideo);
+        } else if (type === 'answer' && peerConnection) {
+            const answer = parseSDP(call.data);
+            if (answer) {
+                await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+                drainIceQueue();
+            }
+        } else if (type === 'ice-candidate' && peerConnection) {
+            const candidate = parseCandidate(call.data);
+            if (candidate) queueOrAddIce(candidate);
+        } else if (type === 'reject') {
+            // Our call was rejected
+            toast('Call was declined');
+            endCall();
+        } else if (type === 'cancel') {
+            // Caller cancelled
+            stopRingtone();
+            document.getElementById('incomingOverlay').classList.remove('open');
+            pendingOffer = null;
+            toast('Call cancelled');
+        } else if (type === 'end') {
+            endCall();
+        }
+    }
+
+    async function checkMissedCalls() {
+        const { data } = await db
+            .from('calls')
+            .select('*')
+            .eq('receiver_id', currentUser.id)
+            .eq('type', 'offer')
+            .order('created_at', { ascending: false })
+            .limit(1);
+        if (data && data.length > 0 && !processedCallIds.has(data[0].id)) {
+            processedCallIds.add(data[0].id);
+            pendingOffer = data[0];
+            showIncomingCall(data[0].sender_id, checkOfferIsVideo(data[0].data));
+        }
+    }
+
+    function checkOfferIsVideo(data) {
+        try { const sdp = typeof data === 'string' ? JSON.parse(data) : data; return sdp?.sdp?.includes('m=video'); }
+        catch { return false; }
+    }
+    function parseSDP(data) { try { return typeof data === 'string' ? JSON.parse(data) : data; } catch { return null; } }
+    function parseCandidate(data) { try { return typeof data === 'string' ? JSON.parse(data) : data; } catch { return null; } }
+
+    /* ===== ICE CANDIDATE QUEUE ===== */
+    async function queueOrAddIce(candidate) {
+        if (peerConnection && peerConnection.remoteDescription) {
+            try { await peerConnection.addIceCandidate(new RTCIceCandidate(candidate)); } catch (e) { console.warn('ICE add error:', e); }
+        } else {
+            iceQueue.push(candidate);
+        }
+    }
+
+    async function drainIceQueue() {
+        while (iceQueue.length > 0) {
+            const c = iceQueue.shift();
+            try { await peerConnection.addIceCandidate(new RTCIceCandidate(c)); } catch (e) { console.warn('ICE drain error:', e); }
+        }
+    }
+
+    /* ===== INCOMING CALL UI ===== */
+    function showIncomingCall(senderId, isVideo) {
+        if (callState !== 'idle') return; // Already in a call
+        const sender = USERS.find(u => u.id === senderId);
+        document.getElementById('incomingDp').src = getDp(sender);
+        document.getElementById('incomingName').textContent = sender?.username || 'Unknown';
+        document.getElementById('incomingType').textContent = isVideo ? 'Video Call' : 'Voice Call';
+        document.getElementById('incomingOverlay').classList.add('open');
+        startRingtone();
+    }
+
+    document.getElementById('acceptCallBtn').addEventListener('click', async () => {
+        stopRingtone();
+        document.getElementById('incomingOverlay').classList.remove('open');
+        if (!pendingOffer) return;
+        try {
+            await handleAcceptCall(pendingOffer);
+        } catch (e) {
+            console.error('Accept call error:', e);
+            toast('Call failed: ' + e.message);
+            endCall();
+        }
+    });
+
+    document.getElementById('rejectCallBtn').addEventListener('click', async () => {
+        stopRingtone();
+        document.getElementById('incomingOverlay').classList.remove('open');
+        if (pendingOffer) {
+            // Send reject signal
+            await db.from('calls').insert({ sender_id: currentUser.id, receiver_id: pendingOffer.sender_id, type: 'reject', data: '{}' });
+            await db.from('calls').delete().eq('id', pendingOffer.id);
+        }
+        pendingOffer = null;
+    });
+
+    async function handleAcceptCall(call) {
+        const offer = parseSDP(call.data);
+        if (!offer) throw new Error('Invalid offer data');
+
+        currentCallIsVideo = checkOfferIsVideo(call.data);
+        const mediaOk = await acquireMedia(currentCallIsVideo);
+        if (!mediaOk) throw new Error('Microphone/Camera access denied');
+
+        peerConnection = new RTCPeerConnection(RTC_CONFIG);
+        setupPeerConnection(call.sender_id);
+
+        localStream.getTracks().forEach(t => peerConnection.addTrack(t, localStream));
+
+        await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+        drainIceQueue();
+
+        const answer = await peerConnection.createAnswer();
+        await peerConnection.setLocalDescription(answer);
+
+        await db.from('calls').insert({ sender_id: currentUser.id, receiver_id: call.sender_id, type: 'answer', data: JSON.stringify(answer) });
+        await db.from('calls').delete().eq('id', call.id);
+
+        callState = 'connected';
+        showCallOverlay(call.sender_id, 'Connected');
+        startCallTimer();
+        pendingOffer = null;
+    }
+
+    /* ===== OUTGOING CALL ===== */
+    document.getElementById('voiceCallBtn').addEventListener('click', () => initiateCall(false));
+    document.getElementById('videoCallBtn').addEventListener('click', () => initiateCall(true));
+
+    async function initiateCall(isVideo) {
+        if (callState !== 'idle') { toast('Already in a call'); return; }
+        currentCallIsVideo = isVideo;
+
+        const mediaOk = await acquireMedia(isVideo);
+        if (!mediaOk) return;
+
+        peerConnection = new RTCPeerConnection(RTC_CONFIG);
+        setupPeerConnection(otherUser.id);
+        localStream.getTracks().forEach(t => peerConnection.addTrack(t, localStream));
+
+        const offer = await peerConnection.createOffer();
+        await peerConnection.setLocalDescription(offer);
+
+        await db.from('calls').insert({ sender_id: currentUser.id, receiver_id: otherUser.id, type: 'offer', data: JSON.stringify(offer) });
+
+        callState = 'calling';
+        showCallOverlay(otherUser.id, 'Calling...');
+        startCallTimeout();
+    }
+
+    function setupPeerConnection(partnerId) {
+        const remoteStream = new MediaStream();
+        document.getElementById('remoteVideo').srcObject = remoteStream;
+
+        peerConnection.ontrack = e => {
+            e.streams[0].getTracks().forEach(t => remoteStream.addTrack(t));
+        };
+
+        peerConnection.onicecandidate = e => {
+            if (e.candidate) {
+                db.from('calls').insert({ sender_id: currentUser.id, receiver_id: partnerId, type: 'ice-candidate', data: JSON.stringify(e.candidate) });
+            }
+        };
+
+        peerConnection.onconnectionstatechange = () => {
+            const s = peerConnection.connectionState;
+            if (s === 'connected') {
+                callState = 'connected';
+                clearCallTimeout();
+                document.getElementById('callOverlayStatus').textContent = 'Connected';
+                startCallTimer();
+            } else if (s === 'disconnected' || s === 'failed') {
+                toast('Call connection lost');
+                endCall();
+            }
+        };
+    }
+
+    /* ===== CALL OVERLAY UI ===== */
+    function showCallOverlay(partnerId, statusText) {
+        const partner = USERS.find(u => u.id === partnerId);
+        document.getElementById('callOverlayDp').src = getDp(partner);
+        document.getElementById('callOverlayName').textContent = partner?.username || 'Unknown';
+        document.getElementById('callOverlayStatus').textContent = statusText;
+        document.getElementById('callOverlayTimer').style.display = 'none';
+
+        const videoRow = document.getElementById('callVideosRow');
+        if (currentCallIsVideo) {
+            videoRow.classList.add('show');
+            document.getElementById('localVideo').srcObject = localStream;
+            document.getElementById('callOverlayDp').style.display = 'none';
+            document.getElementById('cameraBtn').style.display = 'flex';
+        } else {
+            videoRow.classList.remove('show');
+            document.getElementById('callOverlayDp').style.display = 'block';
+            document.getElementById('cameraBtn').style.display = 'none';
+        }
+
+        // Reset controls
+        isMuted = false;
+        isCameraOff = false;
+        document.getElementById('muteBtn').className = 'call-ctrl off';
+        document.getElementById('muteBtn').innerHTML = '<i class="fas fa-microphone"></i>';
+        document.getElementById('cameraBtn').className = 'call-ctrl off';
+        document.getElementById('cameraBtn').innerHTML = '<i class="fas fa-video"></i>';
+
+        document.getElementById('callOverlay').classList.add('open');
+    }
+
+    /* ===== CALL TIMER ===== */
+    function startCallTimer() {
+        callStartTime = Date.now();
+        const timerEl = document.getElementById('callOverlayTimer');
+        timerEl.style.display = 'block';
+        document.getElementById('callOverlayStatus').style.display = 'none';
+        callTimerInterval = setInterval(() => {
+            const elapsed = Math.floor((Date.now() - callStartTime) / 1000);
+            timerEl.textContent = fmtElapsed(elapsed);
+        }, 1000);
+    }
+
+    /* ===== CALL TIMEOUT (30s) ===== */
+    function startCallTimeout() {
+        clearCallTimeout();
+        callTimeout = setTimeout(() => {
+            if (callState === 'calling') {
+                toast('Call not answered');
+                // Send cancel signal
+                db.from('calls').insert({ sender_id: currentUser.id, receiver_id: otherUser.id, type: 'cancel', data: '{}' });
+                endCall();
+            }
+        }, 30000);
+    }
+
+    function clearCallTimeout() { if (callTimeout) { clearTimeout(callTimeout); callTimeout = null; } }
+
+    /* ===== END CALL ===== */
+    document.getElementById('endCallBtn').addEventListener('click', () => {
+        // Notify partner
+        if (callState !== 'idle' && otherUser) {
+            db.from('calls').insert({ sender_id: currentUser.id, receiver_id: otherUser.id, type: 'end', data: '{}' });
+        }
+        endCall();
+    });
+
+    function endCall() {
+        callState = 'idle';
+        clearCallTimeout();
+        stopRingtone();
+        if (callTimerInterval) { clearInterval(callTimerInterval); callTimerInterval = null; }
+        if (localStream) { localStream.getTracks().forEach(t => t.stop()); localStream = null; }
+        if (peerConnection) { peerConnection.close(); peerConnection = null; }
+        iceQueue = [];
+        pendingOffer = null;
+
+        document.getElementById('callOverlay').classList.remove('open');
+        document.getElementById('incomingOverlay').classList.remove('open');
+        document.getElementById('localVideo').srcObject = null;
+        document.getElementById('remoteVideo').srcObject = null;
+        document.getElementById('callOverlayStatus').style.display = 'block';
+
+        // Cleanup old call records
+        cleanupCallRecords();
+    }
+
+    async function cleanupCallRecords() {
+        try {
+            await db.from('calls').delete().eq('sender_id', currentUser.id);
+            await db.from('calls').delete().eq('receiver_id', currentUser.id);
+        } catch (e) { /* silent */ }
+    }
+
+    /* ===== MEDIA ===== */
+    async function acquireMedia(isVideo) {
+        try {
+            localStream = await navigator.mediaDevices.getUserMedia({
+                audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+                video: isVideo ? { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 480 } } : false
+            });
+            return true;
+        } catch (e) {
+            console.error('Media error:', e);
+            if (e.name === 'NotFoundError') toast('No microphone/camera found');
+            else if (e.name === 'NotAllowedError') toast('Permission denied for mic/camera');
+            else toast('Media error: ' + e.message);
+            return false;
+        }
+    }
+
+    /* ===== CALL CONTROLS ===== */
+    document.getElementById('muteBtn').addEventListener('click', () => {
+        isMuted = !isMuted;
+        if (localStream) {
+            localStream.getAudioTracks().forEach(t => { t.enabled = !isMuted; });
+        }
+        const btn = document.getElementById('muteBtn');
+        btn.className = isMuted ? 'call-ctrl on' : 'call-ctrl off';
+        btn.innerHTML = isMuted ? '<i class="fas fa-microphone-slash"></i>' : '<i class="fas fa-microphone"></i>';
+    });
+
+    document.getElementById('speakerBtn').addEventListener('click', () => {
+        const btn = document.getElementById('speakerBtn');
+        const isOn = btn.classList.contains('on');
+        btn.className = isOn ? 'call-ctrl off' : 'call-ctrl on';
+        btn.innerHTML = isOn ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>';
+        // Toggle remote video element volume (indirect)
+        const rv = document.getElementById('remoteVideo');
+        rv.muted = !isOn;
+    });
+
+    document.getElementById('cameraBtn').addEventListener('click', () => {
+        isCameraOff = !isCameraOff;
+        if (localStream) {
+            localStream.getVideoTracks().forEach(t => { t.enabled = !isCameraOff; });
+        }
+        const btn = document.getElementById('cameraBtn');
+        btn.className = isCameraOff ? 'call-ctrl on' : 'call-ctrl off';
+        btn.innerHTML = isCameraOff ? '<i class="fas fa-video-slash"></i>' : '<i class="fas fa-video"></i>';
+    });
+</script>
+</body>
+</html>
