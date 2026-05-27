@@ -31,22 +31,16 @@
         body{background:var(--bg);font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--text-primary);min-height:100vh;font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent}
         img{display:block}
 
-        /* ===== HEADER ===== */
         .header{background:var(--card);box-shadow:var(--shadow);position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 12px;height:52px}
         .header-brand{font-family:'Sacramento',cursive;font-size:30px;color:var(--primary);font-weight:700;line-height:1;cursor:default;user-select:none}
         .header-right{display:flex;gap:4px;align-items:center}
-        .icon-btn{width:38px;height:38px;border-radius:50%;background:var(--hover-bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-size:17px;transition:background .15s,transform .1s;position:relative}
+        .icon-btn{width:38px;height:38px;border-radius:50%;background:var(--hover-bg);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text-secondary);font-size:17px;transition:background .15s,transform .1s}
         .icon-btn:hover{background:var(--border)}
         .icon-btn:active{transform:scale(.93)}
-        .icon-btn .badge{position:absolute;top:4px;right:4px;width:8px;height:8px;border-radius:50%;background:var(--danger)}
 
-        /* ===== APP CONTAINER ===== */
         .app-wrap{max-width:680px;margin:0 auto;padding:12px 8px 80px}
-
-        /* ===== CARDS ===== */
         .card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
 
-        /* ===== PROFILE ===== */
         .profile-cover{height:100px;background:linear-gradient(135deg,#1877F2 0%,#42A5F5 60%,#90CAF9 100%);position:relative}
         .profile-body{text-align:center;padding:0 16px 14px;position:relative}
         .profile-dp{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--card);margin:-42px auto 0;position:relative;z-index:1;background:var(--border)}
@@ -54,7 +48,6 @@
         .profile-bio{color:var(--text-secondary);font-size:13px;margin-top:2px}
         .profile-btns{display:flex;gap:6px;justify-content:center;margin-top:10px;flex-wrap:wrap}
 
-        /* ===== BUTTONS ===== */
         .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:7px 14px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;transition:background .15s,transform .1s;white-space:nowrap}
         .btn:active{transform:scale(.96)}
         .btn-primary{background:var(--primary);color:#fff}
@@ -64,10 +57,7 @@
         .btn-danger{background:var(--danger);color:#fff}
         .btn-danger:hover{background:#c4182f}
         .btn-sm{padding:5px 10px;font-size:12px}
-        .btn-link{background:none;border:none;color:var(--text-light);cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;padding:4px 8px;border-radius:4px}
-        .btn-link:hover{background:var(--hover-bg);color:var(--text-secondary)}
 
-        /* ===== CALL BAR ===== */
         .call-bar{display:flex;align-items:center;gap:10px;padding:12px 14px}
         .call-bar-dp{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
         .call-bar-info{flex:1;min-width:0}
@@ -81,7 +71,6 @@
         .call-action-btn.video{background:var(--primary-light);color:var(--primary)}
         .call-action-btn.video:hover{background:var(--primary);color:#fff}
 
-        /* ===== CREATE POST TRIGGER ===== */
         .create-trigger{display:flex;align-items:center;gap:10px;padding:10px 14px}
         .create-trigger-dp{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
         .create-trigger-input{flex:1;background:var(--hover-bg);border:none;border-radius:20px;padding:9px 14px;font-size:14px;color:var(--text-secondary);cursor:pointer;text-align:left;font-family:'Inter',sans-serif;transition:background .15s}
@@ -92,9 +81,8 @@
         .create-action i{font-size:18px}
         .create-action.live i{color:var(--danger)}
         .create-action.photo i{color:var(--success)}
-        .create-action.room i{color:#9b59b6}
+        .create-action.feeling i{color:#E8A823}
 
-        /* ===== POST ===== */
         .post-header{display:flex;align-items:center;padding:10px 14px 0;gap:8px}
         .post-dp{width:38px;height:38px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
         .post-meta{flex:1;min-width:0}
@@ -114,7 +102,6 @@
         .post-action-btn.liked{color:var(--primary)}
         .post-action-btn i{font-size:17px}
 
-        /* ===== COMMENTS ===== */
         .comments-wrap{padding:0 14px 6px}
         .comment{display:flex;gap:7px;margin-top:6px}
         .comment-dp{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--border)}
@@ -133,10 +120,9 @@
         .comment-send{width:32px;height:32px;border-radius:50%;border:none;background:var(--primary);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:background .15s,transform .1s;flex-shrink:0}
         .comment-send:active{transform:scale(.88)}
 
-        /* ===== MODALS ===== */
         .modal-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:16px}
         .modal-backdrop.open{display:flex}
-        .modal-card{background:var(--card);border-radius:var(--radius-lg);width:100%;max-width:460px;box-shadow:var(--shadow-lg);animation:modalIn .2s ease}
+        .modal-card{background:var(--card);border-radius:var(--radius-lg);width:100%;max-width:460px;box-shadow:var(--shadow-lg);animation:modalIn .2s ease;max-height:90vh;overflow-y:auto}
         @keyframes modalIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
         .modal-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--border)}
         .modal-head h3{font-size:18px;font-weight:700}
@@ -158,23 +144,23 @@
         .img-preview-remove{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.55);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px}
         .modal-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:8px}
 
-        /* ===== LOGIN ===== */
         .login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;background:var(--bg)}
         .login-card{background:var(--card);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);padding:28px 22px;width:100%;max-width:380px;text-align:center}
         .login-brand{font-family:'Sacramento',cursive;font-size:48px;color:var(--primary);line-height:1.1}
         .login-tagline{color:var(--text-secondary);font-size:14px;margin:4px 0 22px}
         .login-card .form-input{margin-bottom:10px}
 
-        /* ===== CALL OVERLAY ===== */
         .call-overlay{display:none;position:fixed;inset:0;background:linear-gradient(170deg,#0d1b2a 0%,#1b2838 40%,#1a3a5c 100%);z-index:300;flex-direction:column;align-items:center;justify-content:center;color:#fff}
         .call-overlay.open{display:flex}
         .call-overlay-dp{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.25);background:#2a3a4a}
         .call-overlay-name{font-size:22px;font-weight:700;margin-top:14px}
         .call-overlay-status{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px}
         .call-overlay-timer{font-size:20px;margin-top:6px;font-variant-numeric:tabular-nums;letter-spacing:1px}
+        /* Hidden audio: always in DOM, never display:none, so browser decodes it */
+        #remoteAudio{position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;opacity:0}
         .call-videos-row{display:none;gap:6px;margin:20px 0;width:92%;max-width:500px}
         .call-videos-row.show{display:flex}
-        .call-videos-row video{flex:1;border-radius:10px;background:rgba(0,0,0,.35);max-height:260px;object-fit:cover}
+        .call-videos-row video{flex:1;border-radius:10px;background:rgba(0,0,0,.35);max-height:260px;object-fit:cover;min-height:120px}
         .call-controls{display:flex;gap:14px;margin-top:30px;align-items:center}
         .call-ctrl{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:#fff;transition:transform .12s,background .15s}
         .call-ctrl:active{transform:scale(.88)}
@@ -184,7 +170,6 @@
         .call-ctrl.end{background:var(--danger);width:60px;height:60px;font-size:24px}
         .call-ctrl.end:hover{background:#c4182f}
 
-        /* ===== INCOMING CALL ===== */
         .incoming-overlay{display:none;position:fixed;inset:0;background:linear-gradient(170deg,#0d1b2a 0%,#1b2838 40%,#1a3a5c 100%);z-index:350;flex-direction:column;align-items:center;justify-content:center;color:#fff}
         .incoming-overlay.open{display:flex}
         .incoming-dp{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.25);animation:callPulse 2s infinite ease-out;background:#2a3a4a}
@@ -193,23 +178,20 @@
         .incoming-type{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px}
         .incoming-btns{display:flex;gap:56px;margin-top:48px}
         .incoming-btn-col{display:flex;flex-direction:column;align-items:center;gap:8px}
-        .incoming-btn{width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;transition:transform .12s}
+        .incoming-btn{width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff;transition:transform .12px}
         .incoming-btn:active{transform:scale(.9)}
         .incoming-btn.accept{background:var(--success)}
         .incoming-btn.reject{background:var(--danger)}
         .incoming-btn-col span{font-size:12px;color:rgba(255,255,255,.6)}
 
-        /* ===== TOAST ===== */
         .toast-wrap{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:500;pointer-events:none}
         .toast{background:var(--text-primary);color:#fff;padding:10px 18px;border-radius:8px;font-size:13px;box-shadow:var(--shadow-lg);animation:toastIn .25s ease;white-space:nowrap}
         @keyframes toastIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-        /* ===== EMPTY STATE ===== */
         .empty-state{text-align:center;padding:32px 16px;color:var(--text-light)}
         .empty-state i{font-size:36px;margin-bottom:8px;display:block;color:var(--border)}
         .empty-state p{font-size:14px}
 
-        /* ===== RESPONSIVE ===== */
         @media(max-width:480px){
             .header-brand{font-size:26px}
             .profile-name{font-size:18px}
@@ -225,7 +207,7 @@
 </head>
 <body>
 
-<!-- ===== LOGIN PAGE ===== -->
+<!-- Login Page -->
 <div id="loginPage" class="login-page">
     <div class="login-card">
         <div class="login-brand">Mangoes Book</div>
@@ -238,7 +220,7 @@
     </div>
 </div>
 
-<!-- ===== MAIN APP ===== -->
+<!-- Main App -->
 <div id="mainApp" style="display:none">
     <header class="header">
         <div class="header-brand">Mangoes Book</div>
@@ -247,8 +229,6 @@
         </div>
     </header>
     <main class="app-wrap">
-
-        <!-- Profile Card -->
         <div class="card" id="profileCard">
             <div class="profile-cover"></div>
             <div class="profile-body">
@@ -261,8 +241,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Call Bar -->
         <div class="card" id="callBar">
             <div class="call-bar">
                 <img id="callBarDp" class="call-bar-dp" alt="">
@@ -276,26 +254,22 @@
                 </div>
             </div>
         </div>
-
-        <!-- Create Post Trigger -->
         <div class="card">
             <div class="create-trigger">
                 <img id="createDp" class="create-trigger-dp" alt="">
                 <div class="create-trigger-input" id="openPostModal">What's on your mind?</div>
             </div>
             <div class="create-actions">
-                <button class="create-action live"><i class="fas fa-video"></i> Live</button>
+                <button class="create-action live" id="liveBtn"><i class="fas fa-video"></i> Live</button>
                 <button class="create-action photo" id="openPostPhoto"><i class="fas fa-image"></i> Photo</button>
-                <button class="create-action room"><i class="fas fa-smile"></i> Feeling</button>
+                <button class="create-action feeling" id="feelingBtn"><i class="fas fa-smile"></i> Feeling</button>
             </div>
         </div>
-
-        <!-- Feed -->
         <div id="feedContainer"></div>
     </main>
 </div>
 
-<!-- ===== POST MODAL ===== -->
+<!-- Post Modal -->
 <div class="modal-backdrop" id="postModal">
     <div class="modal-card">
         <div class="modal-head">
@@ -323,7 +297,7 @@
     </div>
 </div>
 
-<!-- ===== EDIT PROFILE MODAL ===== -->
+<!-- Edit Profile Modal -->
 <div class="modal-backdrop" id="editModal">
     <div class="modal-card">
         <div class="modal-head">
@@ -354,7 +328,7 @@
     </div>
 </div>
 
-<!-- ===== INCOMING CALL ===== -->
+<!-- Incoming Call -->
 <div class="incoming-overlay" id="incomingOverlay">
     <img id="incomingDp" class="incoming-dp" alt="">
     <div class="incoming-name" id="incomingName"></div>
@@ -371,12 +345,14 @@
     </div>
 </div>
 
-<!-- ===== ACTIVE CALL ===== -->
+<!-- Active Call -->
 <div class="call-overlay" id="callOverlay">
     <img id="callOverlayDp" class="call-overlay-dp" alt="">
     <div class="call-overlay-name" id="callOverlayName"></div>
     <div class="call-overlay-status" id="callOverlayStatus">Calling...</div>
     <div class="call-overlay-timer" id="callOverlayTimer" style="display:none">00:00</div>
+    <!-- Dedicated audio element: positioned off-screen, never display:none, so browser always decodes it -->
+    <audio id="remoteAudio" autoplay playsinline></audio>
     <div class="call-videos-row" id="callVideosRow">
         <video id="localVideo" autoplay playsinline muted></video>
         <video id="remoteVideo" autoplay playsinline></video>
@@ -389,7 +365,7 @@
     </div>
 </div>
 
-<!-- ===== TOAST ===== -->
+<!-- Toast -->
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
@@ -403,28 +379,34 @@
         { id: '566e8b0b-a07a-4442-b18d-2a3ca87f7992', username: 'mango1', password: 'mango1726' },
         { id: 'f960d7a8-ec35-4ff6-910a-6571c8b74caa', username: 'mango2', password: 'mango1726' }
     ];
-    const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="#E4E6EB" width="100" height="100"/><text x="50" y="58" text-anchor="middle" fill="#8A8D91" font-size="36" font-family="sans-serif">?</text></svg>');
+    const PLACEHOLDER = 'data:image/svg+xml,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="#E4E6EB" width="100" height="100"/><text x="50" y="62" text-anchor="middle" fill="#8A8D91" font-size="40" font-family="sans-serif">?</text></svg>'
+    );
 
     /* ===== APP STATE ===== */
     let currentUser = null;
     let otherUser = null;
     let localStream = null;
     let peerConnection = null;
-    let iceQueue = [];              // Queue ICE candidates until remote description is set
+    let iceQueue = [];
     let callState = 'idle';         // idle | calling | ringing | connected
     let currentCallIsVideo = false;
     let callTimerInterval = null;
     let callStartTime = null;
     let callTimeout = null;
-    let pendingOffer = null;        // The offer record for the incoming call
+    let pendingOffer = null;
     let isMuted = false;
     let isCameraOff = false;
+    let isSpeakerOn = false;
     let updatesChannel = null;
     let callsChannel = null;
     let processedCallIds = new Set();
     let retryDelayUp = 2000;
     let retryDelayCall = 2000;
     let ringtoneStop = null;
+    let postFile = null;
+    let editDpFile = null;
+    let mediaCheckInterval = null;
 
     const RTC_CONFIG = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
 
@@ -453,7 +435,32 @@
 
     function getDp(u) { return u?.profile_picture || PLACEHOLDER; }
 
-    /* ===== RINGTONE (Web Audio) ===== */
+    function escHtml(s) {
+        const d = document.createElement('div');
+        d.textContent = s;
+        return d.innerHTML;
+    }
+
+    function parseSDP(data) {
+        try { return typeof data === 'string' ? JSON.parse(data) : data; }
+        catch { return null; }
+    }
+
+    function parseCandidate(data) {
+        try { return typeof data === 'string' ? JSON.parse(data) : data; }
+        catch { return null; }
+    }
+
+    function checkOfferIsVideo(data) {
+        try {
+            const sdp = typeof data === 'string' ? JSON.parse(data) : data;
+            return sdp?.sdp?.includes('m=video');
+        } catch { return false; }
+    }
+
+    function imgFall(el) { el.onerror = null; el.src = PLACEHOLDER; }
+
+    /* ===== RINGTONE ===== */
     function startRingtone() {
         try {
             const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -462,15 +469,12 @@
                 if (!on) return;
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.frequency.value = 523;
-                gain.gain.value = 0.12;
-                osc.start(ctx.currentTime);
-                osc.stop(ctx.currentTime + 0.25);
+                osc.connect(gain); gain.connect(ctx.destination);
+                osc.frequency.value = 523; gain.gain.value = 0.15;
+                osc.start(ctx.currentTime); osc.stop(ctx.currentTime + 0.3);
             }
             beep();
-            const iv = setInterval(() => { if (on) beep(); }, 1200);
+            const iv = setInterval(() => { if (on) beep(); }, 1400);
             ringtoneStop = () => { on = false; clearInterval(iv); ctx.close(); };
         } catch (e) { /* silent */ }
     }
@@ -494,8 +498,7 @@
         endCall();
         if (updatesChannel) db.removeChannel(updatesChannel);
         if (callsChannel) db.removeChannel(callsChannel);
-        updatesChannel = null;
-        callsChannel = null;
+        updatesChannel = null; callsChannel = null;
         localStorage.removeItem('loggedInUser');
         sessionStorage.removeItem('justLoggedIn');
         document.getElementById('mainApp').style.display = 'none';
@@ -512,13 +515,13 @@
     async function initApp(user) {
         currentUser = user;
         otherUser = USERS.find(u => u.id !== user.id);
-
         document.getElementById('loginPage').style.display = 'none';
         document.getElementById('mainApp').style.display = 'block';
 
-        // Load full profile from DB
         const { data: profile } = await db.from('users').select('*').eq('id', user.id).single();
-        if (profile) { currentUser = { ...currentUser, ...profile }; }
+        if (profile) currentUser = { ...currentUser, ...profile };
+        const { data: otherProfile } = await db.from('users').select('*').eq('id', otherUser.id).single();
+        if (otherProfile) otherUser = { ...otherUser, ...otherProfile };
 
         loadProfileUI();
         loadCallBar();
@@ -531,16 +534,17 @@
     /* ===== PROFILE UI ===== */
     function loadProfileUI() {
         document.getElementById('profileDp').src = getDp(currentUser);
+        document.getElementById('profileDp').onerror = function() { imgFall(this); };
         document.getElementById('profileName').textContent = currentUser.username;
         document.getElementById('profileBio').textContent = currentUser.bio || 'No bio yet';
         document.getElementById('createDp').src = getDp(currentUser);
+        document.getElementById('createDp').onerror = function() { imgFall(this); };
     }
 
     /* ===== CALL BAR ===== */
-    async function loadCallBar() {
-        const { data: otherProfile } = await db.from('users').select('*').eq('id', otherUser.id).single();
-        if (otherProfile) otherUser = { ...otherUser, ...otherProfile };
+    function loadCallBar() {
         document.getElementById('callBarDp').src = getDp(otherUser);
+        document.getElementById('callBarDp').onerror = function() { imgFall(this); };
         document.getElementById('callBarName').textContent = otherUser.username;
     }
 
@@ -548,14 +552,11 @@
     async function loadFeed() {
         const { data, error } = await db
             .from('posts')
-            .select(`
-                id, content, image, created_at, user_id,
+            .select(`id, content, image, created_at, user_id,
                 users!posts_user_id_fkey(username, profile_picture),
                 comments(id, content, created_at, user_id, users!comments_user_id_fkey(username, profile_picture)),
-                likes(id, user_id)
-            `)
+                likes(id, user_id)`)
             .order('created_at', { ascending: false });
-
         if (error) { console.error('Feed error:', error); return; }
 
         const container = document.getElementById('feedContainer');
@@ -569,20 +570,19 @@
             const likeCount = post.likes ? post.likes.length : 0;
             const isLiked = post.likes ? post.likes.some(l => l.user_id === currentUser.id) : false;
             const commentCount = post.comments ? post.comments.length : 0;
-
             const div = document.createElement('div');
             div.className = 'card post';
             div.innerHTML = `
                 <div class="post-header">
-                    <img src="${getDp(post.users)}" class="post-dp" alt="">
+                    <img src="${getDp(post.users)}" class="post-dp" alt="" onerror="imgFall(this)">
                     <div class="post-meta">
-                        <div class="post-author">${post.users.username}</div>
+                        <div class="post-author">${escHtml(post.users.username)}</div>
                         <div class="post-time">${fmtDate(post.created_at)}</div>
                     </div>
-                    ${post.user_id === currentUser.id ? `<button class="post-delete" data-post-id="${post.id}" title="Delete"><i class="fas fa-ellipsis-h"></i></button>` : ''}
+                    ${post.user_id === currentUser.id ? `<button class="post-delete" data-post-id="${post.id}" title="Delete"><i class="fas fa-trash-alt"></i></button>` : ''}
                 </div>
                 ${post.content ? `<div class="post-body"><div class="post-text">${escHtml(post.content)}</div></div>` : ''}
-                ${post.image ? `<img src="${post.image}" class="post-image" alt="" loading="lazy">` : ''}
+                ${post.image ? `<img src="${post.image}" class="post-image" alt="" loading="lazy" onerror="imgFall(this)">` : ''}
                 <div class="post-stats">
                     <div class="post-stats-left">
                         ${likeCount > 0 ? `<span class="like-react-icon"><i class="fas fa-thumbs-up" style="font-size:9px"></i></span> ${likeCount}` : ''}
@@ -601,10 +601,10 @@
                     <div class="comments-wrap">
                         ${post.comments.map(c => `
                             <div class="comment">
-                                <img src="${getDp(c.users)}" class="comment-dp" alt="">
+                                <img src="${getDp(c.users)}" class="comment-dp" alt="" onerror="imgFall(this)">
                                 <div>
                                     <div class="comment-bubble">
-                                        <div class="comment-author">${c.users.username}</div>
+                                        <div class="comment-author">${escHtml(c.users.username)}</div>
                                         <div class="comment-text">${escHtml(c.content)}</div>
                                     </div>
                                     <div class="comment-footer">
@@ -614,54 +614,35 @@
                                 </div>
                             </div>
                         `).join('')}
-                    </div>
-                ` : ''}
+                    </div>` : ''}
                 <div class="comment-input-row">
-                    <img src="${getDp(currentUser)}" class="comment-input-dp" alt="">
+                    <img src="${getDp(currentUser)}" class="comment-input-dp" alt="" onerror="imgFall(this)">
                     <input type="text" class="comment-input-field" data-post-id="${post.id}" placeholder="Write a comment...">
                     <button class="comment-send" data-post-id="${post.id}"><i class="fas fa-paper-plane"></i></button>
-                </div>
-            `;
+                </div>`;
             container.appendChild(div);
         });
 
-        // Bind events
-        container.querySelectorAll('[data-action="like"]').forEach(btn => {
-            btn.addEventListener('click', () => likePost(btn.dataset.postId));
-        });
-        container.querySelectorAll('[data-action="comment-focus"]').forEach(btn => {
+        container.querySelectorAll('[data-action="like"]').forEach(btn =>
+            btn.addEventListener('click', () => likePost(btn.dataset.postId)));
+        container.querySelectorAll('[data-action="comment-focus"]').forEach(btn =>
             btn.addEventListener('click', () => {
-                const input = container.querySelector(`.comment-input-field[data-post-id="${btn.dataset.postId}"]`);
-                if (input) input.focus();
-            });
-        });
-        container.querySelectorAll('.post-delete').forEach(btn => {
-            btn.addEventListener('click', () => { if (confirm('Delete this post?')) deletePost(btn.dataset.postId); });
-        });
-        container.querySelectorAll('.del-btn').forEach(btn => {
-            btn.addEventListener('click', () => deleteComment(btn.dataset.commentId));
-        });
-        container.querySelectorAll('.comment-send').forEach(btn => {
+                const inp = container.querySelector(`.comment-input-field[data-post-id="${btn.dataset.postId}"]`);
+                if (inp) inp.focus();
+            }));
+        container.querySelectorAll('.post-delete').forEach(btn =>
+            btn.addEventListener('click', () => { if (confirm('Delete this post?')) deletePost(btn.dataset.postId); }));
+        container.querySelectorAll('.del-btn').forEach(btn =>
+            btn.addEventListener('click', () => deleteComment(btn.dataset.commentId)));
+        container.querySelectorAll('.comment-send').forEach(btn =>
             btn.addEventListener('click', () => {
-                const input = container.querySelector(`.comment-input-field[data-post-id="${btn.dataset.postId}"]`);
-                if (input && input.value.trim()) {
-                    addComment(btn.dataset.postId, input.value.trim());
-                }
-            });
-        });
-        container.querySelectorAll('.comment-input-field').forEach(input => {
-            input.addEventListener('keydown', e => {
-                if (e.key === 'Enter' && input.value.trim()) {
-                    addComment(input.dataset.postId, input.value.trim());
-                }
-            });
-        });
-    }
-
-    function escHtml(s) {
-        const d = document.createElement('div');
-        d.textContent = s;
-        return d.innerHTML;
+                const inp = container.querySelector(`.comment-input-field[data-post-id="${btn.dataset.postId}"]`);
+                if (inp && inp.value.trim()) addComment(btn.dataset.postId, inp.value.trim());
+            }));
+        container.querySelectorAll('.comment-input-field').forEach(inp =>
+            inp.addEventListener('keydown', e => {
+                if (e.key === 'Enter' && inp.value.trim()) addComment(inp.dataset.postId, inp.value.trim());
+            }));
     }
 
     /* ===== POST CRUD ===== */
@@ -670,60 +651,62 @@
         if (error && error.code !== '23505') toast('Like failed');
         loadFeed();
     }
-
     async function addComment(postId, content) {
         const { error } = await db.from('comments').insert([{ post_id: postId, user_id: currentUser.id, content }]);
         if (error) toast('Comment failed');
         loadFeed();
     }
-
     async function deletePost(postId) {
         await db.from('likes').delete().eq('post_id', postId);
         await db.from('comments').delete().eq('post_id', postId);
         await db.from('posts').delete().eq('id', postId);
         loadFeed();
     }
-
     async function deleteComment(commentId) {
         await db.from('comments').delete().eq('id', commentId);
         loadFeed();
     }
 
     /* ===== CREATE POST MODAL ===== */
-    let postFile = null;
     document.getElementById('openPostModal').addEventListener('click', openPostModal);
-    document.getElementById('openPostPhoto').addEventListener('click', () => { openPostModal(); document.getElementById('postFileInput').click(); });
+    document.getElementById('openPostPhoto').addEventListener('click', () => {
+        openPostModal();
+        setTimeout(() => document.getElementById('postFileInput').click(), 250);
+    });
+    document.getElementById('feelingBtn').addEventListener('click', () => {
+        openPostModal();
+        setTimeout(() => {
+            const ta = document.getElementById('postTextarea');
+            if (!ta.value) ta.value = 'is feeling ';
+            ta.focus();
+            ta.setSelectionRange(ta.value.length, ta.value.length);
+        }, 150);
+    });
+    document.getElementById('liveBtn').addEventListener('click', () => toast('Live coming soon'));
     document.getElementById('closePostModal').addEventListener('click', closePostModal);
     document.getElementById('cancelPost').addEventListener('click', closePostModal);
     document.getElementById('postModal').addEventListener('click', e => { if (e.target === e.currentTarget) closePostModal(); });
 
     function openPostModal() {
         document.getElementById('postModalDp').src = getDp(currentUser);
+        document.getElementById('postModalDp').onerror = function() { imgFall(this); };
         document.getElementById('postModalName').textContent = currentUser.username;
         document.getElementById('postTextarea').value = '';
         document.getElementById('postImgPreview').classList.remove('show');
+        document.getElementById('postFileInput').value = '';
         postFile = null;
         document.getElementById('postModal').classList.add('open');
-        setTimeout(() => document.getElementById('postTextarea').focus(), 100);
+        setTimeout(() => document.getElementById('postTextarea').focus(), 120);
     }
-
-    function closePostModal() {
-        document.getElementById('postModal').classList.remove('open');
-        postFile = null;
-    }
+    function closePostModal() { document.getElementById('postModal').classList.remove('open'); postFile = null; }
 
     document.getElementById('postFileInput').addEventListener('change', e => {
-        const f = e.target.files[0];
-        if (!f) return;
+        const f = e.target.files[0]; if (!f) return;
         postFile = f;
         const reader = new FileReader();
-        reader.onload = ev => {
-            document.getElementById('postImgPreviewImg').src = ev.target.result;
-            document.getElementById('postImgPreview').classList.add('show');
-        };
+        reader.onload = ev => { document.getElementById('postImgPreviewImg').src = ev.target.result; document.getElementById('postImgPreview').classList.add('show'); };
         reader.readAsDataURL(f);
     });
-
     document.getElementById('removePostImg').addEventListener('click', () => {
         postFile = null;
         document.getElementById('postImgPreview').classList.remove('show');
@@ -732,29 +715,26 @@
 
     document.getElementById('submitPost').addEventListener('click', async () => {
         const content = document.getElementById('postTextarea').value.trim();
-        if (!content && !postFile) return;
-
+        if (!content && !postFile) { toast('Write something or add a photo'); return; }
         let imageUrl = null;
         if (postFile) {
             const path = `${currentUser.id}/${Date.now()}_${postFile.name}`;
             const { error: upErr } = await db.storage.from('profile-pics').upload(path, postFile, { upsert: true });
-            if (upErr) { toast('Image upload failed'); return; }
-            imageUrl = db.storage.from('profile-pics').getPublicUrl(path).data.publicUrl;
+            if (upErr) { toast('Image upload failed: ' + upErr.message); return; }
+            const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(path);
+            imageUrl = urlData.publicUrl;
         }
-
         const { error } = await db.from('posts').insert([{ user_id: currentUser.id, content: content || '', image: imageUrl }]);
         if (error) { toast('Post failed'); return; }
-        closePostModal();
-        loadFeed();
-        toast('Posted!');
+        closePostModal(); loadFeed(); toast('Posted!');
     });
 
     /* ===== EDIT PROFILE MODAL ===== */
-    let editDpFile = null;
     document.getElementById('editProfileBtn').addEventListener('click', () => {
         document.getElementById('editName').value = currentUser.username || '';
         document.getElementById('editBio').value = currentUser.bio || '';
         document.getElementById('editDpPreview').classList.remove('show');
+        document.getElementById('editDpInput').value = '';
         editDpFile = null;
         document.getElementById('editModal').classList.add('open');
     });
@@ -763,17 +743,12 @@
     document.getElementById('editModal').addEventListener('click', e => { if (e.target === e.currentTarget) document.getElementById('editModal').classList.remove('open'); });
 
     document.getElementById('editDpInput').addEventListener('change', e => {
-        const f = e.target.files[0];
-        if (!f) return;
+        const f = e.target.files[0]; if (!f) return;
         editDpFile = f;
         const reader = new FileReader();
-        reader.onload = ev => {
-            document.getElementById('editDpPreviewImg').src = ev.target.result;
-            document.getElementById('editDpPreview').classList.add('show');
-        };
+        reader.onload = ev => { document.getElementById('editDpPreviewImg').src = ev.target.result; document.getElementById('editDpPreview').classList.add('show'); };
         reader.readAsDataURL(f);
     });
-
     document.getElementById('removeEditDp').addEventListener('click', () => {
         editDpFile = null;
         document.getElementById('editDpPreview').classList.remove('show');
@@ -781,28 +756,25 @@
     });
 
     document.getElementById('saveEdit').addEventListener('click', async () => {
-        const newName = document.getElementById('editName').value.trim();
+        const newName = document.getElementById('editName').value.trim() || currentUser.username;
         const newBio = document.getElementById('editBio').value.trim();
         let dpUrl = currentUser.profile_picture || PLACEHOLDER;
-
         if (editDpFile) {
             const path = `${currentUser.id}/dp_${Date.now()}_${editDpFile.name}`;
             const { error: upErr } = await db.storage.from('profile-pics').upload(path, editDpFile, { upsert: true });
-            if (!upErr) dpUrl = db.storage.from('profile-pics').getPublicUrl(path).data.publicUrl;
+            if (upErr) { toast('Photo upload failed: ' + upErr.message); }
+            else {
+                const { data: urlData } = db.storage.from('profile-pics').getPublicUrl(path);
+                dpUrl = urlData.publicUrl; toast('Photo uploaded');
+            }
         }
-
-        currentUser.username = newName;
-        currentUser.bio = newBio;
-        currentUser.profile_picture = dpUrl;
+        currentUser.username = newName; currentUser.bio = newBio; currentUser.profile_picture = dpUrl;
         localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
-
-        await db.from('users').upsert({ id: currentUser.id, username: newName, bio: newBio, profile_picture: dpUrl }, { onConflict: 'id' });
-
-        loadProfileUI();
-        loadCallBar();
-        loadFeed();
+        const { error: dbErr } = await db.from('users').upsert({ id: currentUser.id, username: newName, bio: newBio, profile_picture: dpUrl }, { onConflict: 'id' });
+        if (dbErr) toast('Save failed: ' + dbErr.message); else toast('Profile updated');
+        loadProfileUI(); loadCallBar(); loadFeed();
+        editDpFile = null;
         document.getElementById('editModal').classList.remove('open');
-        toast('Profile updated');
     });
 
     /* ===== CLEAR DATA ===== */
@@ -812,21 +784,16 @@
         await db.from('comments').delete().neq('id', '00000000-0000-0000-0000-000000000000');
         await db.from('posts').delete().neq('id', '00000000-0000-0000-0000-000000000000');
         await db.from('calls').delete().neq('id', '00000000-0000-0000-0000-000000000000');
-        // Reset profile
-        currentUser.profile_picture = PLACEHOLDER;
-        currentUser.bio = '';
+        currentUser.profile_picture = PLACEHOLDER; currentUser.bio = '';
         localStorage.setItem('loggedInUser', JSON.stringify(currentUser));
         await db.from('users').upsert({ id: currentUser.id, username: currentUser.username, bio: '', profile_picture: PLACEHOLDER }, { onConflict: 'id' });
-        loadProfileUI();
-        loadFeed();
-        toast('All data cleared');
+        loadProfileUI(); loadFeed(); toast('All data cleared');
     });
 
     /* ===== SUBSCRIPTIONS ===== */
     function subscribeUpdates() {
         if (updatesChannel) db.removeChannel(updatesChannel);
-        updatesChannel = db
-            .channel('updates-ch')
+        updatesChannel = db.channel('updates-ch')
             .on('postgres_changes', { event: '*', schema: 'public', table: 'posts' }, () => loadFeed())
             .on('postgres_changes', { event: '*', schema: 'public', table: 'comments' }, () => loadFeed())
             .on('postgres_changes', { event: '*', schema: 'public', table: 'likes' }, () => loadFeed())
@@ -839,8 +806,7 @@
 
     function subscribeCalls() {
         if (callsChannel) db.removeChannel(callsChannel);
-        callsChannel = db
-            .channel('calls-ch')
+        callsChannel = db.channel('calls-ch')
             .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'calls', filter: `receiver_id=eq.${currentUser.id}` }, payload => handleCallSignal(payload.new))
             .subscribe(status => {
                 if (status === 'CHANNEL_ERROR' || status === 'TIMED_OUT') {
@@ -854,12 +820,9 @@
         processedCallIds.add(call.id);
 
         const type = call.type;
-
         if (type === 'offer') {
-            // Incoming call
             pendingOffer = call;
-            const isVideo = checkOfferIsVideo(call.data);
-            showIncomingCall(call.sender_id, isVideo);
+            showIncomingCall(call.sender_id, checkOfferIsVideo(call.data));
         } else if (type === 'answer' && peerConnection) {
             const answer = parseSDP(call.data);
             if (answer) {
@@ -870,28 +833,20 @@
             const candidate = parseCandidate(call.data);
             if (candidate) queueOrAddIce(candidate);
         } else if (type === 'reject') {
-            // Our call was rejected
-            toast('Call was declined');
-            endCall();
+            toast('Call was declined'); endCall();
         } else if (type === 'cancel') {
-            // Caller cancelled
             stopRingtone();
             document.getElementById('incomingOverlay').classList.remove('open');
-            pendingOffer = null;
-            toast('Call cancelled');
+            pendingOffer = null; toast('Call cancelled');
         } else if (type === 'end') {
             endCall();
         }
     }
 
     async function checkMissedCalls() {
-        const { data } = await db
-            .from('calls')
-            .select('*')
-            .eq('receiver_id', currentUser.id)
-            .eq('type', 'offer')
-            .order('created_at', { ascending: false })
-            .limit(1);
+        const { data } = await db.from('calls').select('*')
+            .eq('receiver_id', currentUser.id).eq('type', 'offer')
+            .order('created_at', { ascending: false }).limit(1);
         if (data && data.length > 0 && !processedCallIds.has(data[0].id)) {
             processedCallIds.add(data[0].id);
             pendingOffer = data[0];
@@ -899,34 +854,27 @@
         }
     }
 
-    function checkOfferIsVideo(data) {
-        try { const sdp = typeof data === 'string' ? JSON.parse(data) : data; return sdp?.sdp?.includes('m=video'); }
-        catch { return false; }
-    }
-    function parseSDP(data) { try { return typeof data === 'string' ? JSON.parse(data) : data; } catch { return null; } }
-    function parseCandidate(data) { try { return typeof data === 'string' ? JSON.parse(data) : data; } catch { return null; } }
-
     /* ===== ICE CANDIDATE QUEUE ===== */
     async function queueOrAddIce(candidate) {
-        if (peerConnection && peerConnection.remoteDescription) {
-            try { await peerConnection.addIceCandidate(new RTCIceCandidate(candidate)); } catch (e) { console.warn('ICE add error:', e); }
-        } else {
-            iceQueue.push(candidate);
-        }
+        if (peerConnection && peerConnection.remoteDescription && peerConnection.remoteDescription.type) {
+            try { await peerConnection.addIceCandidate(new RTCIceCandidate(candidate)); }
+            catch (e) { console.warn('ICE add error:', e); }
+        } else { iceQueue.push(candidate); }
     }
-
     async function drainIceQueue() {
         while (iceQueue.length > 0) {
             const c = iceQueue.shift();
-            try { await peerConnection.addIceCandidate(new RTCIceCandidate(c)); } catch (e) { console.warn('ICE drain error:', e); }
+            try { await peerConnection.addIceCandidate(new RTCIceCandidate(c)); }
+            catch (e) { console.warn('ICE drain error:', e); }
         }
     }
 
     /* ===== INCOMING CALL UI ===== */
     function showIncomingCall(senderId, isVideo) {
-        if (callState !== 'idle') return; // Already in a call
+        if (callState !== 'idle') return;
         const sender = USERS.find(u => u.id === senderId);
         document.getElementById('incomingDp').src = getDp(sender);
+        document.getElementById('incomingDp').onerror = function() { imgFall(this); };
         document.getElementById('incomingName').textContent = sender?.username || 'Unknown';
         document.getElementById('incomingType').textContent = isVideo ? 'Video Call' : 'Voice Call';
         document.getElementById('incomingOverlay').classList.add('open');
@@ -937,20 +885,14 @@
         stopRingtone();
         document.getElementById('incomingOverlay').classList.remove('open');
         if (!pendingOffer) return;
-        try {
-            await handleAcceptCall(pendingOffer);
-        } catch (e) {
-            console.error('Accept call error:', e);
-            toast('Call failed: ' + e.message);
-            endCall();
-        }
+        try { await handleAcceptCall(pendingOffer); }
+        catch (e) { console.error('Accept call error:', e); toast('Call failed: ' + e.message); endCall(); }
     });
 
     document.getElementById('rejectCallBtn').addEventListener('click', async () => {
         stopRingtone();
         document.getElementById('incomingOverlay').classList.remove('open');
         if (pendingOffer) {
-            // Send reject signal
             await db.from('calls').insert({ sender_id: currentUser.id, receiver_id: pendingOffer.sender_id, type: 'reject', data: '{}' });
             await db.from('calls').delete().eq('id', pendingOffer.id);
         }
@@ -966,9 +908,11 @@
         if (!mediaOk) throw new Error('Microphone/Camera access denied');
 
         peerConnection = new RTCPeerConnection(RTC_CONFIG);
-        setupPeerConnection(call.sender_id);
-
+        /* Important: add local tracks BEFORE creating the answer
+           so the answer SDP includes sendrecv for all media types */
         localStream.getTracks().forEach(t => peerConnection.addTrack(t, localStream));
+
+        setupPeerConnection(call.sender_id);
 
         await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
         drainIceQueue();
@@ -997,8 +941,10 @@
         if (!mediaOk) return;
 
         peerConnection = new RTCPeerConnection(RTC_CONFIG);
-        setupPeerConnection(otherUser.id);
+        /* Add local tracks first */
         localStream.getTracks().forEach(t => peerConnection.addTrack(t, localStream));
+
+        setupPeerConnection(otherUser.id);
 
         const offer = await peerConnection.createOffer();
         await peerConnection.setLocalDescription(offer);
@@ -1010,63 +956,141 @@
         startCallTimeout();
     }
 
+    /* ===== PEER CONNECTION SETUP ===== */
     function setupPeerConnection(partnerId) {
-        const remoteStream = new MediaStream();
-        document.getElementById('remoteVideo').srcObject = remoteStream;
+        const remoteAudio = document.getElementById('remoteAudio');
+        const remoteVideo = document.getElementById('remoteVideo');
 
+        /* ontrack: use the native stream from the event directly.
+           This is the key fix — do NOT create a separate MediaStream
+           and add tracks to it. Instead, use e.streams[0] which
+           already has proper track synchronization from the WebRTC stack.
+           Also, set srcObject HERE when tracks arrive, not beforehand. */
         peerConnection.ontrack = e => {
-            e.streams[0].getTracks().forEach(t => remoteStream.addTrack(t));
+            console.log('ontrack fired:', e.track.kind, 'streams:', e.streams.length);
+
+            /* Use the WebRTC-native stream from the event */
+            const stream = (e.streams && e.streams.length > 0) ? e.streams[0] : null;
+
+            if (stream) {
+                /* Set the stream on the remote video element */
+                remoteVideo.srcObject = stream;
+
+                /* For the dedicated audio element:
+                   - Voice calls: audio element plays the audio (video row hidden)
+                   - Video calls: video element plays audio+video, so mute audio element to avoid echo */
+                remoteAudio.srcObject = stream;
+
+                /* Explicit play — required on most mobile browsers */
+                remoteVideo.play().then(() => console.log('remoteVideo playing')).catch(err => {
+                    console.warn('remoteVideo play failed:', err);
+                    /* Retry once after a short delay */
+                    setTimeout(() => remoteVideo.play().catch(() => {}), 800);
+                });
+                remoteAudio.play().then(() => console.log('remoteAudio playing')).catch(err => {
+                    console.warn('remoteAudio play failed:', err);
+                    setTimeout(() => remoteAudio.play().catch(() => {}), 800);
+                });
+            } else {
+                /* Fallback: create a stream and add the track manually */
+                let existing = remoteVideo.srcObject;
+                if (!existing) { existing = new MediaStream(); remoteVideo.srcObject = existing; remoteAudio.srcObject = existing; }
+                existing.addTrack(e.track);
+                remoteVideo.play().catch(() => {});
+                remoteAudio.play().catch(() => {});
+            }
         };
 
         peerConnection.onicecandidate = e => {
             if (e.candidate) {
-                db.from('calls').insert({ sender_id: currentUser.id, receiver_id: partnerId, type: 'ice-candidate', data: JSON.stringify(e.candidate) });
+                db.from('calls').insert({
+                    sender_id: currentUser.id,
+                    receiver_id: partnerId,
+                    type: 'ice-candidate',
+                    data: JSON.stringify(e.candidate)
+                });
             }
         };
 
         peerConnection.onconnectionstatechange = () => {
             const s = peerConnection.connectionState;
+            console.log('Connection state:', s);
             if (s === 'connected') {
                 callState = 'connected';
                 clearCallTimeout();
                 document.getElementById('callOverlayStatus').textContent = 'Connected';
                 startCallTimer();
+                /* Force play once connected — belt and suspenders */
+                if (remoteVideo.srcObject) remoteVideo.play().catch(() => {});
+                if (remoteAudio.srcObject) remoteAudio.play().catch(() => {});
             } else if (s === 'disconnected' || s === 'failed') {
                 toast('Call connection lost');
                 endCall();
             }
         };
+
+        /* Start a periodic check to force-play remote media.
+           This handles the mobile browser case where play() is blocked
+           outside user-gesture context — once the user interacts with
+           the call overlay (mute, speaker, etc.), the next check succeeds. */
+        if (mediaCheckInterval) clearInterval(mediaCheckInterval);
+        mediaCheckInterval = setInterval(() => {
+            if (callState === 'idle') { clearInterval(mediaCheckInterval); mediaCheckInterval = null; return; }
+            if (remoteVideo.srcObject && remoteVideo.paused) {
+                remoteVideo.play().catch(() => {});
+            }
+            if (remoteAudio.srcObject && remoteAudio.paused) {
+                remoteAudio.play().catch(() => {});
+            }
+        }, 2000);
     }
 
     /* ===== CALL OVERLAY UI ===== */
     function showCallOverlay(partnerId, statusText) {
         const partner = USERS.find(u => u.id === partnerId);
         document.getElementById('callOverlayDp').src = getDp(partner);
+        document.getElementById('callOverlayDp').onerror = function() { imgFall(this); };
         document.getElementById('callOverlayName').textContent = partner?.username || 'Unknown';
         document.getElementById('callOverlayStatus').textContent = statusText;
+        document.getElementById('callOverlayStatus').style.display = 'block';
         document.getElementById('callOverlayTimer').style.display = 'none';
 
         const videoRow = document.getElementById('callVideosRow');
+        const remoteAudio = document.getElementById('remoteAudio');
+
         if (currentCallIsVideo) {
             videoRow.classList.add('show');
             document.getElementById('localVideo').srcObject = localStream;
             document.getElementById('callOverlayDp').style.display = 'none';
             document.getElementById('cameraBtn').style.display = 'flex';
+            /* For video calls: remoteVideo handles audio+video.
+               Mute the separate audio element to prevent echo. */
+            remoteAudio.muted = true;
         } else {
             videoRow.classList.remove('show');
             document.getElementById('callOverlayDp').style.display = 'block';
             document.getElementById('cameraBtn').style.display = 'none';
+            /* For voice calls: video row is hidden.
+               The audio element plays the remote voice — must NOT be muted. */
+            remoteAudio.muted = false;
         }
 
-        // Reset controls
-        isMuted = false;
-        isCameraOff = false;
+        /* Reset control states */
+        isMuted = false; isCameraOff = false; isSpeakerOn = false;
         document.getElementById('muteBtn').className = 'call-ctrl off';
         document.getElementById('muteBtn').innerHTML = '<i class="fas fa-microphone"></i>';
         document.getElementById('cameraBtn').className = 'call-ctrl off';
         document.getElementById('cameraBtn').innerHTML = '<i class="fas fa-video"></i>';
+        document.getElementById('speakerBtn').className = 'call-ctrl off';
+        document.getElementById('speakerBtn').innerHTML = '<i class="fas fa-volume-up"></i>';
 
         document.getElementById('callOverlay').classList.add('open');
+
+        /* "Prime" the remote media elements during this user-gesture context.
+           Calling play() now (even with no stream yet) "unlocks" the element
+           so that later programmatic play() calls aren't blocked by autoplay policy. */
+        try { document.getElementById('remoteVideo').play(); } catch(e) {}
+        try { document.getElementById('remoteAudio').play(); } catch(e) {}
     }
 
     /* ===== CALL TIMER ===== */
@@ -1087,18 +1111,15 @@
         callTimeout = setTimeout(() => {
             if (callState === 'calling') {
                 toast('Call not answered');
-                // Send cancel signal
                 db.from('calls').insert({ sender_id: currentUser.id, receiver_id: otherUser.id, type: 'cancel', data: '{}' });
                 endCall();
             }
         }, 30000);
     }
-
     function clearCallTimeout() { if (callTimeout) { clearTimeout(callTimeout); callTimeout = null; } }
 
     /* ===== END CALL ===== */
     document.getElementById('endCallBtn').addEventListener('click', () => {
-        // Notify partner
         if (callState !== 'idle' && otherUser) {
             db.from('calls').insert({ sender_id: currentUser.id, receiver_id: otherUser.id, type: 'end', data: '{}' });
         }
@@ -1109,19 +1130,24 @@
         callState = 'idle';
         clearCallTimeout();
         stopRingtone();
+        if (mediaCheckInterval) { clearInterval(mediaCheckInterval); mediaCheckInterval = null; }
         if (callTimerInterval) { clearInterval(callTimerInterval); callTimerInterval = null; }
         if (localStream) { localStream.getTracks().forEach(t => t.stop()); localStream = null; }
         if (peerConnection) { peerConnection.close(); peerConnection = null; }
-        iceQueue = [];
-        pendingOffer = null;
+        iceQueue = []; pendingOffer = null;
+
+        /* Clear remote media */
+        const remoteAudio = document.getElementById('remoteAudio');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const localVideo = document.getElementById('localVideo');
+        remoteAudio.pause(); remoteAudio.srcObject = null; remoteAudio.muted = false;
+        remoteVideo.pause(); remoteVideo.srcObject = null;
+        localVideo.pause(); localVideo.srcObject = null;
 
         document.getElementById('callOverlay').classList.remove('open');
         document.getElementById('incomingOverlay').classList.remove('open');
-        document.getElementById('localVideo').srcObject = null;
-        document.getElementById('remoteVideo').srcObject = null;
         document.getElementById('callOverlayStatus').style.display = 'block';
 
-        // Cleanup old call records
         cleanupCallRecords();
     }
 
@@ -1132,7 +1158,7 @@
         } catch (e) { /* silent */ }
     }
 
-    /* ===== MEDIA ===== */
+    /* ===== MEDIA ACQUISITION ===== */
     async function acquireMedia(isVideo) {
         try {
             localStream = await navigator.mediaDevices.getUserMedia({
@@ -1152,29 +1178,25 @@
     /* ===== CALL CONTROLS ===== */
     document.getElementById('muteBtn').addEventListener('click', () => {
         isMuted = !isMuted;
-        if (localStream) {
-            localStream.getAudioTracks().forEach(t => { t.enabled = !isMuted; });
-        }
+        if (localStream) localStream.getAudioTracks().forEach(t => { t.enabled = !isMuted; });
         const btn = document.getElementById('muteBtn');
         btn.className = isMuted ? 'call-ctrl on' : 'call-ctrl off';
         btn.innerHTML = isMuted ? '<i class="fas fa-microphone-slash"></i>' : '<i class="fas fa-microphone"></i>';
     });
 
     document.getElementById('speakerBtn').addEventListener('click', () => {
+        isSpeakerOn = !isSpeakerOn;
         const btn = document.getElementById('speakerBtn');
-        const isOn = btn.classList.contains('on');
-        btn.className = isOn ? 'call-ctrl off' : 'call-ctrl on';
-        btn.innerHTML = isOn ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>';
-        // Toggle remote video element volume (indirect)
-        const rv = document.getElementById('remoteVideo');
-        rv.muted = !isOn;
+        btn.className = isSpeakerOn ? 'call-ctrl on' : 'call-ctrl off';
+        btn.innerHTML = isSpeakerOn ? '<i class="fas fa-volume-up"></i>' : '<i class="fas fa-volume-mute"></i>';
+        /* Volume approximation for earpiece vs loudspeaker */
+        document.getElementById('remoteAudio').volume = isSpeakerOn ? 1.0 : 0.3;
+        document.getElementById('remoteVideo').volume = isSpeakerOn ? 1.0 : 0.3;
     });
 
     document.getElementById('cameraBtn').addEventListener('click', () => {
         isCameraOff = !isCameraOff;
-        if (localStream) {
-            localStream.getVideoTracks().forEach(t => { t.enabled = !isCameraOff; });
-        }
+        if (localStream) localStream.getVideoTracks().forEach(t => { t.enabled = !isCameraOff; });
         const btn = document.getElementById('cameraBtn');
         btn.className = isCameraOff ? 'call-ctrl on' : 'call-ctrl off';
         btn.innerHTML = isCameraOff ? '<i class="fas fa-video-slash"></i>' : '<i class="fas fa-video"></i>';
